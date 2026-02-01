@@ -41,15 +41,105 @@ Mission Control is a single, persistent cockpit.
 •	There are no traditional screens or page navigation
 •	Interaction is driven by zoom, not menus
 Zoom Model
-Fully zoomed out:
-•	The entire cockpit is visible
-•	Readable, high-level status only
-•	No levers, knobs, or detailed controls
-Zooming in:
-•	Clicking a sector smoothly zooms the camera into that domain
-•	Controls, charts, dials, and levers become visible
-•	Deeper zoom reveals deeper layers
-The Fractal Principle: Every level of zoom follows the same structural DNA. A department looks like a mini-cockpit. A project inside that department looks like a mini-cockpit. It's cockpits all the way down.
+
+The Cockpit uses a zoom-based interaction paradigm. There are no pages, no menus, no navigation trees. You move through the system by zooming in and out—like a camera over a living map of your company.
+
+________________________________________
+The Core Principle: Zoom = Authority
+
+Zoom is not just navigation. Zoom is permission.
+
+The deeper you zoom, the more control you unlock. Staying zoomed out keeps you in observation mode—aware, but not armed. Zooming in grants access to levers, knobs, and controls that can change the state of the system.
+
+This principle exists for three reasons:
+
+1. **Cognitive Load** — At high altitude, the CEO needs situational awareness, not a cluttered wall of controls. Simplicity at scale.
+
+2. **Intentionality** — Consequential actions require deliberate movement. You cannot accidentally fire an executive from God View. You must navigate there with purpose.
+
+3. **Safety** — Gating controls behind zoom creates a natural confirmation layer. The act of zooming is itself a form of consent.
+
+*"Altitude is awareness. Depth is agency. You cannot command what you have not approached."*
+
+________________________________________
+Zoom Levels Defined
+
+The Cockpit has three conceptual zoom levels. These are not rigid "screens"—the zoom is continuous—but they represent distinct interaction states.
+
+**Level 1: Global View (God View)**
+The entire cockpit is visible. All six sectors are on screen. You see headline status, health indicators, and attention flags. You see the shape of the company at a glance.
+
+- *Interaction state:* Observation
+- *Primary action:* Click a sector to zoom in
+- *Controls available:* Navigation only (no operational controls)
+
+**Level 2: Sector View**
+You have zoomed into a single sector (e.g., The Organization, Governance, Command). The contents of that sector fill the frame. Sub-elements become distinct and readable. High-level controls begin to appear.
+
+- *Interaction state:* Orientation + Light Control
+- *Primary action:* Click a sub-element to zoom deeper, or interact with sector-level controls
+- *Controls available:* Sector-scoped actions (e.g., prioritization, triage, escalation acknowledgment)
+
+**Level 3: Sub-Panel View (Detail View)**
+You have zoomed into a specific element—a department, a project, an agent, a decision. Full detail is exposed. All controls relevant to that element are available.
+
+- *Interaction state:* Full Control
+- *Primary action:* Operate, configure, adjust, execute
+- *Controls available:* All element-specific controls (create, edit, delete, configure, override)
+
+**Level 4+: Deep Dive (Fractal Depth)**
+The pattern continues infinitely. A project contains tasks. A task contains subtasks. An agent contains memory and action logs. Every element can be zoomed into further, revealing more detail and more control.
+
+________________________________________
+The Fractal Principle
+
+Every level of zoom follows the same structural DNA. A department looks like a mini-cockpit. A project inside that department looks like a mini-cockpit. It's cockpits all the way down.
+
+This consistency means the CEO never learns a new interface—only new content within a familiar frame.
+
+________________________________________
+Visibility vs. Controllability
+
+At every zoom level, there is a distinction between what is *visible* (read-only awareness) and what is *controllable* (actionable).
+
+| Zoom Level | Visible | Controllable |
+|------------|---------|---------------|
+| **Global (L1)** | All sectors, headline status, health indicators, attention flags, aggregate metrics | Navigation only—click to zoom |
+| **Sector (L2)** | All sub-elements within the sector, detailed status, trends, assigned owners, blockers | Sector-scoped actions: prioritize, acknowledge, triage, reassign at sector level |
+| **Sub-Panel (L3)** | Full element detail: history, logs, memory, configuration, relationships, state | Full control: create, edit, delete, configure, execute, adjust autonomy, override |
+| **Deep Dive (L4+)** | Granular internals: subtasks, action history, decision rationale, raw data | Granular control: modify individual records, replay actions, edit memory |
+
+**The rule:** Status bubbles up. Control requires descent.
+
+You can always *see* that something is wrong from God View. But you must *go there* to fix it.
+
+________________________________________
+Transition Behavior
+
+- **Zoom In:** Click any element to smoothly zoom the camera into that element. The transition is continuous, not a hard cut. The element grows to fill the frame while surrounding context fades.
+
+- **Zoom Out:** Click the background, press Escape, or use a persistent "altitude" control to pull back. The current element shrinks back into its parent context.
+
+- **Breadcrumb Awareness:** At any depth, the CEO knows where they are. A subtle breadcrumb or altitude indicator shows the current path (e.g., Organization → Technology → Project Alpha → Task 7).
+
+- **Snap Levels:** While zoom is continuous, the system "snaps" to clean resting states at each level for readability. You won't get stuck at awkward in-between zoom states.
+
+________________________________________
+Examples of Zoom = Authority in Action
+
+1. **Red Health Indicator on Technology**
+   From God View, you see the Technology sector glowing amber. You can *see* there's a problem. But you cannot intervene from here. You must zoom into Technology (L2), then into the specific project or agent causing the issue (L3), before you can take action.
+
+2. **Blocked Project in Execution Pipelines**
+   From inside a department (L2), you see a project marked "Blocked" in the Execution Pipelines panel. You can see it. But to reassign resources, change the deadline, or escalate—you must zoom into that project (L3).
+
+3. **Agent Performance Declining**
+   From the Department Workforce panel (L2), you notice an agent's performance signal is yellow. You can *see* the signal. But to investigate, adjust autonomy, or modify the agent's mandate, you must zoom into that agent's detail view (L3/L4).
+
+4. **Kill Switch in Command**
+   Exception: Some global controls exist at L1 in the Command sector—emergency overrides and kill switches. These are intentionally accessible at high altitude because they are *meant* to be fast. But they are visually distinct, require confirmation, and are logged with maximum severity.
+
+________________________________________
 Zoom level determines abstraction and authority:
 •	High altitude → strategy and posture
 •	Low altitude → tactics and execution
