@@ -203,6 +203,138 @@ Configuration
 •	Data retention and privacy settings
 This is not a department—it's the control panel for the cockpit itself.
 ________________________________________
+Sector Boundaries & Exclusions
+
+Each sector has a defined scope. Clean boundaries prevent confusion, reduce cognitive load, and ensure the CEO always knows where to look. The following codifies what belongs—and critically, what does NOT belong—in each sector.
+
+**Command (CEO)**
+
+*What Belongs:*
+- Mission, vision, and values statements
+- Strategic priorities and constraints
+- Global overrides and kill switches
+- Direct line to the Board
+- Decision queue awaiting CEO input
+- Company-wide directives and policy declarations
+
+*What Does NOT Belong:*
+- Operational execution details → The Organization
+- Decisions already made and closed → Memory & Intelligence
+- System settings and technical configuration → Configuration
+- Performance dashboards and health metrics → Outcomes & Health
+- Board deliberations and advisory proceedings → Governance
+- Individual department goals or KPIs → The Organization (department level)
+
+*Boundary Principle:* Command is for setting intent, not monitoring outcomes or managing execution. If you're watching rather than directing, you're in the wrong sector.
+
+________________________________________
+
+**Governance (The Board)**
+
+*What Belongs:*
+- Advisory challenges and strategic pressure-testing
+- Risk surfacing and scenario analysis
+- Approval ceremonies for major, irreversible decisions
+- Logged dissent and rationale
+- Board meeting history and resolutions
+- Fiduciary-level oversight conversations
+
+*What Does NOT Belong:*
+- CEO directives and standing orders → Command
+- Operational decisions and tactical choices → The Organization
+- Real-time risk monitoring and alerts → Outcomes & Health
+- Decision execution logs and audit trails → Memory & Intelligence
+- System configuration and preferences → Configuration
+- Day-to-day department management → The Organization
+
+*Boundary Principle:* Governance is for deliberation and challenge, not direction or execution. The Board advises; it does not command.
+
+________________________________________
+
+**The Organization**
+
+*What Belongs:*
+- All business units (Finance, Operations, Product, Technology, Marketing, Sales, Legal, External Relations, People)
+- Chiefs and their departments
+- Department-level workforce, tools, memory, and execution pipelines
+- Operational work product and deliverables
+- Inter-department coordination and handoffs
+
+*What Does NOT Belong:*
+- CEO-level intent and strategic priorities → Command
+- Board-level governance and advisory content → Governance
+- Company-wide aggregate health and signals → Outcomes & Health
+- Cross-cutting institutional memory and audit logs → Memory & Intelligence
+- Global system settings and platform configuration → Configuration
+
+*Boundary Principle:* The Organization is where work happens. It contains everything that has an owner, a mandate, and execution responsibility. If it's company-wide awareness or system-level control, it lives elsewhere.
+
+________________________________________
+
+**Outcomes & Health**
+
+*What Belongs:*
+- Company-wide goals and success criteria
+- Momentum indicators and trend lines
+- Aggregate risk levels across all departments
+- Signals, anomalies, and attention flags
+- Cross-cutting health metrics (burn, velocity, blockers)
+- The "Check Engine" lights for the whole operation
+
+*What Does NOT Belong:*
+- Setting or modifying goals → Command (company-level) or The Organization (department-level)
+- Execution of remediation work → The Organization
+- Root cause investigation and deep analysis → Zoom into Organization or Memory
+- Historical trend archives → Memory & Intelligence
+- Adjusting alert thresholds or sensitivity → Configuration
+
+*Boundary Principle:* Outcomes & Health is read-only situational awareness. It tells you *what* is happening, not *why* it happened or *how* to fix it. Diagnosis and action require zooming elsewhere.
+
+________________________________________
+
+**Memory & Intelligence**
+
+*What Belongs:*
+- Decisions and their rationale (closed decisions)
+- Institutional context and organizational history
+- Audit logs and compliance trails
+- Knowledge base and documentation
+- Learning patterns and compounding insights
+- Cross-departmental precedent and case law
+
+*What Does NOT Belong:*
+- Active decision-making or open decisions → Command or Governance
+- Live operational status or real-time metrics → Outcomes & Health
+- Execution of work or task management → The Organization
+- System configuration or platform settings → Configuration
+- Forward-looking strategy or future planning → Command or Governance
+
+*Boundary Principle:* Memory & Intelligence is the rearview mirror—what happened, why, and what was learned. It is not for present-tense operations or future-tense planning.
+
+________________________________________
+
+**Configuration**
+
+*What Belongs:*
+- Cadence settings (agent activation frequency)
+- Cost controls and spending limits
+- Agent autonomy levels (global defaults)
+- Notification and escalation preferences
+- Integration credentials and API keys
+- Data retention and privacy settings
+- Platform-level preferences and defaults
+
+*What Does NOT Belong:*
+- Business strategy or company priorities → Command
+- Organizational structure or reporting lines → The Organization
+- Performance monitoring or health dashboards → Outcomes & Health
+- Decision history or institutional memory → Memory & Intelligence
+- Risk governance or approval workflows → Governance
+- Department-specific tool configuration → The Organization (department tools)
+
+*Boundary Principle:* Configuration is the control panel for the cockpit itself—not the company. If a setting affects how the platform behaves, it's here. If it affects how the business operates, it's elsewhere.
+
+________________________________________
 Level 2: The Organization (Business Units)
 Zooming into The Organization reveals all business units as distinct zones:
 Business Unit	Chief	Domain
