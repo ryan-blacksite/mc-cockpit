@@ -91,3 +91,119 @@ Material decisions and strong recommendations. Include rationale.
 All downstream work must conform to this locked vision. Changes require CEO approval and a new version.
 
 ---
+
+### 2026-02-02 — AI Workforce Architecture Spec v1 Locked (BSL-282)
+
+**Decision:** AI Workforce Architecture Spec v1 locked  
+**Artifact:** `/specs/AI-WORKFORCE-ARCHITECTURE-v1.md`  
+**Owner:** Fred Smart  
+**Authority:** CEO
+
+**Key Architectural Decisions:**
+
+1. **5-Tier Hierarchy**
+   - CEO → C-Suite → Managers → Leads → Workers
+   - Leads are first-class (Tier 4), not deferred
+   - *Rationale:* Leads coordinate Workers and own workstreams; essential for scalable task management
+
+2. **Board Exclusion from Operations**
+   - Board is advisory-only
+   - Never appears in escalation paths, approval paths, or operational communications
+   - *Rationale:* Clean separation between advisory and operational authority
+
+3. **Default Autonomy = A1 (Auto-Execute)**
+   - All tiers operate autonomously within their mandate
+   - Escalation is the exception, not the rule
+   - *Rationale:* System should run without permission; CEO intervenes only when necessary
+
+4. **Escalation Chain**
+   - Worker → Lead → Manager → Chief → CEO
+   - Material Risk escalates direct to CEO (copy chain)
+   - *Rationale:* Preserve chain of command while allowing critical issues to surface immediately
+
+5. **Pulse Cadence = 15 minutes**
+   - Default interval for agent execution cycles
+   - Configurable in Configuration sector
+   - *Rationale:* Balance between responsiveness and system load
+
+All downstream implementation must conform to this locked spec. Changes require CEO approval and a version bump.
+
+---
+
+### 2026-02-02 — Cockpit & Zoom Spec v1 Finalized (BSL-290)
+
+**Decision:** Cockpit & Zoom Execution Spec v1 finalized  
+**Artifact:** `/specs/MC-COCKPIT-ZOOM-SPEC-v1.md`  
+**Owner:** Avery James  
+**Authority:** CEO
+
+**Layout Decisions:**
+
+1. **Sector Sizing**
+   - Finance: Large, bottom-center
+   - Governance: Small, bottom-left
+   - Command, Organization, Outcomes: Medium (top row)
+   - Memory: Small, bottom-right
+   - *Rationale:* Finance (burn/runway) is daily-driver data; deserves visual prominence. Command's top-center *position* signals importance without needing size dominance.
+
+**UX Decisions:**
+
+2. **Camera-Based Zoom Model**
+   - Zoom is literal camera approach, not view switching
+   - Same pixels persist during zoom motion; layout scales toward target
+   - No new panels or controls appear during motion
+   - *Rationale:* Spatial continuity creates sense of place, not a dashboard with tabs
+
+3. **Staged Detail Reveal**
+   - Detail content reveals AFTER zoom motion completes
+   - L2/L3 content appears as overlay/expansion, not full reflow
+   - *Rationale:* Progressive disclosure prevents cognitive overload; feels like approaching a surface
+
+**Core Principle Locked:**
+```
+Zoom = spatial continuity + progressive disclosure
+Never teleport. Never hard-swap screens.
+```
+
+All downstream implementation must conform to this spec. Changes require designer (Avery) + CEO approval.
+
+---
+
+### 2026-02-02 — Mission Control Runtime Spec v1 Locked (BSL-289)
+
+**Decision:** MC Runtime Spec v1 locked  
+**Artifact:** `/specs/MC-RUNTIME-SPEC-v1.md`  
+**Owner:** Fred Smart  
+**Authority:** CEO
+
+**Infrastructure Decisions:**
+
+1. **Persistence Layer: Supabase (Postgres)**
+   - All runtime objects stored in Postgres
+   - Row-level security (RLS) for multi-tenancy by company_id
+   - Supabase Auth for user management
+   - *Rationale:* Mission Control's data model is heavily relational; Postgres handles hierarchical relationships cleanly
+
+2. **Real-time Architecture: Dual Channels**
+   - **Supabase Realtime** → Data subscriptions (tasks, alerts, escalations, dashboard sync)
+   - **Dedicated WebSocket/SSE** → AI chat streaming (token-by-token LLM responses)
+   - *Rationale:* Supabase Realtime is optimized for database changes, not arbitrary streaming; chat requires dedicated low-latency bidirectional channel
+
+3. **Pulse Execution: Backend-Owned**
+   - pg_cron triggers Pulse scheduler on interval
+   - Supabase Edge Functions execute Pulse logic
+   - *Rationale:* Pulse is the company's heartbeat; cannot depend on browser being open
+
+4. **AI Chat as First-Class Feature**
+   - ChatSession and ChatMessage data structures defined
+   - Chat API surface documented (session ops, message ops, streaming endpoint)
+   - Chat invariants established (6 rules)
+   - *Rationale:* Real-time chat with every AI agent is fundamental to Mission Control
+
+5. **Board Personas: Out of Scope**
+   - Personas defined in BOARD-GOVERNANCE-SPEC, not runtime spec
+   - *Rationale:* Runtime spec defines mechanics, not content
+
+All downstream implementation must conform to this locked spec. Changes require CEO approval and a version bump.
+
+---
