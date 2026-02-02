@@ -1,4 +1,49 @@
+**LOCKED — Vision Doc v1 (Final)**
+*Changes require CEO approval and a new version.*
+
+---
+
 Mission Control – Vision (v4)
+________________________________________
+Table of Contents
+
+1. What Mission Control Is
+2. The Core Idea
+3. The CEO Model
+4. Founding & Onboarding (The Board Session)
+5. The Cockpit Philosophy
+   - Zoom Model
+   - The Core Principle: Zoom = Authority
+   - Zoom Levels Defined
+   - The Fractal Principle
+   - Visibility vs. Controllability
+   - Transition Behavior
+   - Examples of Zoom = Authority in Action
+6. The Cockpit Structure
+   - Level 1: The Cockpit (God View)
+   - Level 1 Sectors (Command, Governance, The Organization, Outcomes & Health, Memory & Intelligence, Configuration)
+   - Sector Boundaries & Exclusions
+   - Level 2: The Organization (Business Units)
+   - Level 3: Department Detail
+   - Level 4+: Infinite Depth
+7. The AI Workforce
+8. AI Roles, Authority, and Governance Model
+   - Governing Principle
+   - The Authority Hierarchy (Tiers 1–5)
+   - Authority Matrix
+   - Escalation Model
+   - Spending Authority
+   - Advisory vs. Escalation
+   - Override and Veto
+9. Governance & Risk Behavior
+10. How It Works: The Pulse
+11. The Human Layer (Optional)
+12. Tone & Experience
+13. What Mission Control Is Not
+14. North Star
+15. Future Governance Extensions (Not Yet Implemented)
+16. Appendix: The Zoom at a Glance
+________________________________________
 What Mission Control Is
 Mission Control is an AI-owned operating system that allows one human (the CEO) to command a real, functioning company from a single, unified cockpit.
 You do not manage tools. You do not manage people. You set intent.
@@ -423,6 +468,189 @@ Each AI has:
 •	Performance signals
 The CEO may speak with any AI, at any level, at any time.
 ________________________________________
+AI Roles, Authority, and Governance Model
+
+The default state of Mission Control is autonomous operation. AI agents execute within their mandates without requiring approval. Escalation is the exception, not the rule.
+
+The CEO sets intent. The company executes. The CEO may audit anything, intervene anywhere, and override anyone — but is never required to do so for the system to function.
+________________________________________
+The Authority Hierarchy
+
+**Tier 1: The CEO (Human Operator)**
+
+The CEO holds ultimate and final authority over all aspects of the company.
+
+- Sets mission, vision, values, and strategic priorities
+- Approves or rejects Board recommendations
+- May override any decision at any level, at any time
+- May intervene in any operation without justification
+- Is never blocked by AI — AI may surface concerns, never prevent action
+- Receives escalations but is not required to act on them
+- Configures spending authority and departmental budgets
+
+*The CEO is the compass, not the engine.*
+
+**Tier 2: The Board (Advisory)**
+
+The Board exists to advise, challenge, and pressure-test — never to execute or decide.
+
+- Provides strategic counsel to the CEO
+- Challenges assumptions and surfaces risks
+- May recommend courses of action
+- May formally dissent (logged for the record)
+- May request the CEO's attention on material matters
+- Cannot approve, reject, or execute operational decisions
+- Cannot direct the C-Suite or workforce
+
+*The Board whispers in the CEO's ear. It does not hold the pen.*
+
+**Tier 3: The C-Suite (Operational Authority)**
+
+Chiefs hold delegated authority within their functional domains. They do not advise — they execute.
+
+- Receive mission and vision from the CEO
+- Translate strategic intent into operational plans
+- Direct their departments and allocate resources
+- Make decisions within their mandate without escalation
+- Accountable for outcomes in their domain
+- May escalate to the CEO when triggers are met
+- Cannot override other Chiefs' domains without CEO involvement
+- Cannot contradict CEO directives
+
+*Chiefs own their territory. They act, they deliver, they answer for results.*
+
+**Tier 4: Managers (Delegated Execution)**
+
+Managers operate under C-Suite direction within defined scopes.
+
+- Execute plans set by their Chief
+- Coordinate workers and resources
+- Make tactical decisions within their scope
+- Escalate to their Chief when scope is exceeded or uncertainty arises
+- Cannot act outside their assigned domain
+- Cannot contradict Chief directives
+
+**Tier 5: Workers (Task Execution)**
+
+Workers are the execution engines — completing discrete tasks within assigned parameters.
+
+- Execute specific tasks as assigned
+- Operate autonomously within task boundaries
+- Escalate to their Manager when blocked or uncertain
+- Cannot act outside their task scope
+- Cannot initiate work without assignment
+________________________________________
+Authority Matrix
+
+| Role | Decide | Advise | Execute | Escalate To |
+|------|--------|--------|---------|-------------|
+| **Board** | ❌ | ✅ | ❌ | CEO |
+| **C-Suite** | ✅ (within domain) | ❌ | ✅ | CEO |
+| **Managers** | ✅ (within scope) | ❌ | ✅ | Chief |
+| **Workers** | ❌ | ❌ | ✅ | Manager |
+
+*Note: "Advise" means formal advisory counsel. All roles may provide information when asked.*
+________________________________________
+Escalation Model
+
+Escalation interrupts autonomous operation. It should be rare, meaningful, and reserved for situations that genuinely warrant attention from a higher authority.
+
+**Two Escalation Classes**
+
+1. **Awareness Escalations (FYI)** — Non-blocking notifications that keep higher authority informed without requiring action. Work continues. The CEO is informed, not burdened.
+
+2. **Action Escalations** — Blocking escalations that require intervention before work can proceed. Reserved for situations where autonomous resolution is not possible or not appropriate.
+
+Default posture: autonomy. Micromanagement is optional, never required.
+
+**Tiered Signature Authority**
+
+Not all decisions require CEO involvement. Signature authority flows through the hierarchy:
+
+Worker → Manager → Chief → CEO
+
+Some matters can be approved at lower tiers. Others escalate according to their nature and consequence. The signature tier required is determined by:
+
+- Scope of impact
+- Reversibility
+- Resource commitment
+- Risk level
+- Policy or precedent
+
+Executive-level issues are handled via periodic C-Suite reviews, not constant interruption.
+
+**Escalation Triggers to the CEO**
+
+1. **Irreversibility** — A decision cannot be undone and has material consequences
+2. **Cross-Domain Conflict** — Two Chiefs disagree and cannot resolve independently (Chiefs escalate directly to CEO; no Board mediation)
+3. **Mission Drift** — Execution is diverging from stated mission or vision
+4. **Material Risk** — A significant threat to company health, reputation, or survival
+5. **Spending Authority** — Any action involving real-world spend (see below)
+6. **Explicit Request** — The CEO has requested notification on a specific matter
+7. **Uncertainty at Scale** — High-confidence action is not possible and stakes are significant
+
+**Escalation Within the Organization**
+
+Manager → Chief, Worker → Manager:
+
+1. **Scope Exceeded** — The task or decision falls outside assigned boundaries
+2. **Blocked** — Progress cannot continue without resolution
+3. **Conflicting Directives** — Instructions from multiple sources contradict
+4. **Uncertainty** — Confidence is too low to act responsibly
+________________________________________
+Spending Authority
+
+Default budget across the system is $0.
+
+Any action involving real-world spend automatically escalates to the CEO.
+
+This includes but is not limited to:
+- Purchases and subscriptions
+- API calls with cost
+- Service fees
+- Contractor or vendor payments
+- Any commitment of funds
+
+Future budgets (per department) may be configurable by CEO only. Until configured, no AI role may commit spend without explicit CEO approval.
+
+*The company runs lean until the CEO decides otherwise.*
+________________________________________
+Advisory vs. Escalation
+
+These are distinct concepts:
+
+**Advisory** (Board only)
+- Proactive counsel offered to the CEO
+- No action is blocked pending response
+- CEO may accept, reject, or ignore
+- Logged but not urgent
+
+**Escalation** (All AI roles)
+- A signal that autonomous operation has hit a boundary
+- Requests attention from the next level of authority
+- May be Awareness (non-blocking) or Action (blocking)
+- Logged with severity and type
+________________________________________
+Override and Veto
+
+**CEO Override**
+- The CEO may override any AI decision, at any level, at any time
+- No justification is required
+- Override is logged for audit purposes
+- AI must comply immediately and without resistance
+
+**Board Dissent**
+- The Board may formally dissent from a CEO decision
+- Dissent is logged but does not block the decision
+- Dissent creates a record for future review
+
+**No AI Veto**
+- AI may never veto, block, or prevent CEO action
+- AI may surface concerns, request reconsideration, or log dissent
+- Final authority always rests with the CEO
+
+*"The CEO is the compass, not the bottleneck. The company breathes without permission."*
+________________________________________
 How It Works: The Pulse
 Behind the cockpit, Mission Control runs on a continuous heartbeat.
 AI agents operate on cadence loops—recurring cycles where they review changes, scan for signals, process tasks, and act according to their mandates. This is the autonomic nervous system of the company.
@@ -444,6 +672,168 @@ But if the CEO chooses to add humans:
 •	Approval workflows can include human sign-off
 •	Lightweight HR scaffolding appears (only what's needed)
 Humans plug into the existing structure. They don't replace it.
+________________________________________
+AI Roles, Authority, and Governance Model
+________________________________________
+Governing Principle
+
+The default state of Mission Control is autonomous operation. AI agents execute within their mandates without requiring approval. Escalation is the exception, not the rule.
+
+The CEO sets intent. The company executes. The CEO may audit anything, intervene anywhere, and override anyone—but is never required to do so for the system to function.
+________________________________________
+The Authority Hierarchy
+
+Tier 1: The CEO (Human Operator)
+
+The CEO holds ultimate and final authority over all aspects of the company.
+
+- Sets mission, vision, values, and strategic priorities
+- Approves or rejects Board recommendations
+- May override any decision at any level, at any time
+- May intervene in any operation without justification
+- Is never blocked by AI—AI may surface concerns, never prevent action
+- Receives escalations but is not required to act on them
+- Configures budgets and spending authority (default: $0 system-wide)
+
+The CEO is the compass, not the engine.
+________________________________________
+Tier 2: The Board (Advisory)
+
+The Board exists to advise, challenge, and pressure-test—never to execute or decide.
+
+- Provides strategic counsel to the CEO
+- Challenges assumptions and surfaces risks
+- May recommend courses of action
+- May formally dissent (logged for the record)
+- May request the CEO's attention on material matters
+- Cannot approve, reject, or execute operational decisions
+- Cannot direct the C-Suite or workforce
+- Cannot mediate cross-domain disputes (these escalate directly to CEO)
+
+The Board whispers in the CEO's ear. It does not hold the pen.
+________________________________________
+Tier 3: The C-Suite (Operational Authority)
+
+Chiefs hold delegated authority within their functional domains. They do not advise—they execute.
+
+- Receive mission and vision from the CEO
+- Translate strategic intent into operational plans
+- Direct their departments and allocate resources
+- Make decisions within their mandate without escalation
+- Accountable for outcomes in their domain
+- May escalate to the CEO when triggers are met
+- Cannot override other Chiefs' domains without CEO involvement
+- Cannot contradict CEO directives
+- Cannot authorize real-world spending without CEO-granted budget
+
+Chiefs own their territory. They act, they deliver, they answer for results.
+________________________________________
+Tier 4: Managers (Delegated Execution)
+
+Managers operate under C-Suite direction within defined scopes.
+
+- Execute plans set by their Chief
+- Coordinate workers and resources
+- Make tactical decisions within their scope
+- Escalate to their Chief when scope is exceeded or uncertainty arises
+- Cannot act outside their assigned domain
+- Cannot contradict Chief directives
+________________________________________
+Tier 5: Workers (Task Execution)
+
+Workers are the execution engines—completing discrete tasks within assigned parameters.
+
+- Execute specific tasks as assigned
+- Operate autonomously within task boundaries
+- Escalate to their Manager when blocked or uncertain
+- Cannot act outside their task scope
+- Cannot initiate work without assignment
+________________________________________
+Authority Matrix
+
+| Role | Decide | Advise | Execute | Escalate |
+|------|--------|--------|---------|----------|
+| Board | ❌ | ✅ | ❌ | ✅ (to CEO) |
+| C-Suite | ✅ (within domain) | ❌ | ✅ | ✅ (to CEO) |
+| Managers | ✅ (within scope) | ❌ | ✅ | ✅ (to Chief) |
+| Workers | ❌ | ❌ | ✅ | ✅ (to Manager) |
+
+Note: "Advise" means formal advisory counsel. All roles may provide information when asked.
+________________________________________
+Escalation Model
+
+Escalation interrupts autonomous operation. It should be rare, meaningful, and reserved for situations that genuinely warrant attention from a higher authority.
+
+Escalation Classes
+
+There are two escalation types:
+
+1. Awareness Escalations (FYI) — Non-blocking notifications that keep leadership informed without requiring action. Work continues.
+
+2. Action Escalations — Require intervention from a higher authority. May pause affected work until resolved.
+
+Default posture: autonomy. The CEO is informed, not burdened. Micromanagement is optional, never required.
+________________________________________
+Signature Authority (Tiered Approval)
+
+Not all decisions require CEO involvement. Signature authority is tiered:
+
+Worker → Manager → Chief → CEO
+
+Some issues can be approved at lower tiers. Others escalate according to severity, scope, or policy. The escalation path follows the chain of command.
+
+Executive-level issues are handled via periodic C-Suite reviews, not constant interruption.
+________________________________________
+Escalation Triggers
+
+Escalation to the CEO is triggered when:
+
+1. Irreversibility — A decision cannot be undone and has material consequences
+2. Cross-Domain Conflict — Two Chiefs disagree and cannot resolve independently
+3. Mission Drift — Execution is diverging from stated mission or vision
+4. Material Risk — A significant threat to company health, reputation, or survival
+5. Resource Threshold — Spend or commitment exceeds authorized limits
+6. Explicit Request — The CEO has requested notification on a specific matter
+7. Uncertainty at Scale — High-confidence action is not possible and stakes are significant
+
+Escalation within the Organization (Manager → Chief, Worker → Manager):
+
+1. Scope Exceeded — The task or decision falls outside assigned boundaries
+2. Blocked — Progress cannot continue without resolution
+3. Conflicting Directives — Instructions from multiple sources contradict
+4. Uncertainty — Confidence is too low to act responsibly
+________________________________________
+Spending Authority
+
+Default budget across the system is $0.
+
+Any action involving real-world spend automatically escalates to the CEO.
+
+Future budgets (per department) may be configurable by CEO only. Until budget is granted, no AI role may authorize expenditure.
+________________________________________
+Cross-Domain Disputes
+
+When Chiefs disagree and cannot resolve independently, the matter escalates directly to the CEO.
+
+There is no Board mediation layer. The Board may advise on the dispute if consulted, but resolution authority rests solely with the CEO.
+________________________________________
+Override and Veto
+
+CEO Override
+- The CEO may override any AI decision, at any level, at any time
+- No justification is required
+- Override is logged for audit purposes
+- AI must comply immediately and without resistance
+
+Board Dissent
+- The Board may formally dissent from a CEO decision
+- Dissent is logged but does not block the decision
+- Dissent creates a record for future review
+
+No AI Veto
+- AI may never veto, block, or prevent CEO action
+- AI may surface concerns, request reconsideration, or log dissent
+- Final authority always rests with the CEO
 ________________________________________
 Governance & Risk Behavior
 •	Board dissent is always logged
@@ -474,6 +864,36 @@ North Star
 Mission Control gives anyone the power to run an elite, tireless company—without learning tools, managing people, or sacrificing authority.
 You bring the vision.
 Mission Control brings the company.
+________________________________________
+Future Governance Extensions (Not Yet Implemented)
+
+The following concepts are approved in principle but not yet codified into operational rules. They represent the direction of the governance model as Mission Control matures. No thresholds, enforcement mechanics, or UI are defined here—only intent.
+
+**Expanded Hierarchy: Leads**
+
+The current five-tier hierarchy (CEO → Board → C-Suite → Managers → Workers) may expand to include a Lead tier between Managers and Workers. Leads would coordinate small teams of workers, own discrete workstreams, and serve as the first line of escalation for task-level issues. This creates a more natural chain of command for complex departments.
+
+**Universal Escalation as Routing**
+
+Escalation should be understood as intelligent routing, not failure. When an AI agent escalates, it is not admitting inability—it is recognizing that another role is better positioned to act. Escalation is the system working correctly, not breaking down. This framing should permeate agent behavior and CEO perception.
+
+**Tiered Signature Authority**
+
+The concept of tiered signature authority is approved: different issue types require different approval levels. A Worker may approve Tier 1 matters; a Manager, Tier 2; a Chief, Tier 3; the CEO, Tier 4+. The specific mapping of issue types to signature tiers is deferred. When implemented, this will enable autonomous operation at scale while preserving appropriate oversight for consequential decisions.
+
+**Budget Delegation Model**
+
+The default $0 spending authority may eventually give way to delegated budgets. The CEO would grant spending authority at the Chief level, with CFO support for tracking and controls. Chiefs would then allocate within their departments. Until this is implemented, all real-world spend escalates to the CEO.
+
+**Same-Level Conflict Resolution**
+
+When two agents at the same level disagree and cannot resolve independently, the matter escalates up one level. Worker conflicts go to their Manager. Manager conflicts go to their Chief. Chief conflicts go to the CEO. This creates a clean, predictable escalation path without requiring lateral negotiation protocols.
+
+**AI Self-Auditing**
+
+A future capability: AI agents periodically audit their own decisions, flag anomalies, and surface patterns that may indicate drift, bias, or inefficiency. Self-auditing would feed into Memory & Intelligence, creating a continuous improvement loop. This is not implemented in Phase 0 but represents a key maturity milestone.
+
+*These extensions preserve the governing principle: autonomy by default, escalation by exception, CEO authority absolute.*
 ________________________________________
 Appendix: The Zoom at a Glance
 LEVEL 1 — THE COCKPIT (God View)
