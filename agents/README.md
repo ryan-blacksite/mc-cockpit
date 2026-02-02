@@ -12,3 +12,11 @@ Each AI persona has a dedicated markdown file.
 - Task summary
 - Decisions made
 - Open questions
+
+Agent files live in /agents
+Naming format: <first>-<last>.md
+
+Examples:
+Sergio Marquina: sergio-marquina.md
+Avery James: avery-james.md
+Fred Smart: fred-smart.md
