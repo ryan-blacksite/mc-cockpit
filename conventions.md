@@ -75,6 +75,8 @@ These rules are absolute. They cannot be overridden by any agent, spec, feature,
 | S-4 | Sector types are enum, not user-defined strings. |
 | S-5 | Every company begins with a Board onboarding session before any operational activity. |
 
+**Naming disambiguation:** The `Finance` sector (platform settings, cadence, cost controls) shares a name with the `Finance` department type (CFO — money, budgets, forecasts). Context always distinguishes them: the sector controls the cockpit platform; the department manages company finances. In prose where ambiguity is possible, qualify as "Finance sector (platform controls)" vs "Finance department (CFO)."
+
 ---
 
 ## 2. Domain & Naming Conventions

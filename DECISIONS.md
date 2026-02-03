@@ -352,3 +352,23 @@ VISION.md remains in the repo and is documented as optional reference for agents
 All Phase 3 implementation work must follow this roadmap. Changes require CEO approval.
 
 ---
+
+### 2026-02-03 — VISION.md v1.2: Mechanical Rename Damage Fixed
+
+**Decision:** Fix mechanical rename damage in VISION.md v1.1 and align VISION/conventions on two disputed points
+**Artifact:** `VISION.md` v1.2, `conventions.md` (disambiguation note added)
+**Authority:** Executing task per CEO-approved issue
+
+**Problems Fixed:**
+
+1. **"Intelligence & Intelligence"** — The v1.1 session replaced "Memory" globally, turning "Memory & Intelligence" into "Intelligence & Intelligence" (12 occurrences). Corrected to "Intelligence" per conventions.md S-2.
+
+2. **Prose damage from mechanical replacement** — Generic English words (memory, configuration, governance, outcomes) were replaced with sector names (Intelligence, Finance, Operations, Metrics) in ~20 locations where they appeared in ordinary prose, not as sector references. Restored correct English.
+
+3. **Operations ≠ "The Board"** — VISION.md framed Operations as "Operations (The Board)". conventions.md §1.2 explicitly states "This does not make Operations the Board sector." VISION.md updated to remove "(The Board)" framing and add alignment note referencing conventions.md §1.2. conventions.md wins per conflict resolution rule.
+
+4. **Finance sector/department name collision** — Both the sector enum (`Finance`) and a department type (`Finance`) share the same name. Added disambiguation language to VISION.md ("Finance (Platform Controls)" qualifier) and conventions.md (naming disambiguation note under §1.5). No enum change—context distinguishes them.
+
+**Principle Applied:** Targeted phrase-level swaps instead of global word-boundary replacements. Sector names appear only where they are used *as sector names*, not where the same word appears in ordinary English.
+
+---
