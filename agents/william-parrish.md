@@ -68,3 +68,47 @@
 **Status:** BSL-268 complete. Governance model encoded. Open threads resolved or explicitly deferred.
 
 ---
+
+### 2026-02-03 — BSL-292: Board Advisory Runtime Spec
+
+**Assignment:** BSL-292 (Phase 2 — Board Advisory Runtime Spec), child of BSL-289 (MC Runtime Spec)
+
+**Work Completed:**
+- Completed full startup protocol: INDEX.md, VISION.md, agent worklog, BOARD-GOVERNANCE-SPEC-v1.md, MC-RUNTIME-SPEC-v1.md
+- Authored `BOARD-ADVISORY-RUNTIME-SPEC-v1.md` — execution-grade spec translating Board governance into deterministic runtime rules
+- Spec covers 11 major sections:
+  1. Board Agent Definitions (roster, constraints, communication scope)
+  2. Data Structures (BoardSession, Advisory, AdvisoryTrigger, BoardDissent, RedLineEvent)
+  3. Onboarding Session Runtime (initialization, path determination, Path A/B phase sequences, Red-Line detection, output capture, state machine)
+  4. Advisory Trigger System (9 default triggers across 5 categories, evaluation during Pulse, manual CEO request trigger, advisory generation and display)
+  5. Disagreement Runtime (no voting, Chairman synthesis, post-decision behavior rules)
+  6. Board Visibility Rules (read/write scope, sector boundaries)
+  7. Governance Sector Data Model (health calculation: GREEN/YELLOW/RED)
+  8. Pulse Scheduler Integration (Board agents do NOT pulse — triggers evaluated by system)
+  9. Invariants (26 invariants across 5 categories: authority, communication, onboarding, advisory, trigger configuration)
+  10. API Surface (7 operation groups, 20+ endpoints)
+  11. LLM Integration Notes (system prompt structure, session orchestration, pattern detection)
+
+**Key Design Decisions:**
+1. Board agents do NOT execute Pulse cycles — system evaluates triggers on their behalf (reactive, not proactive)
+2. All Advisory records hardcode `blocks_work: false` — non-blocking is structural, not configurable
+3. Red-Line triggers cannot be disabled by CEO — ethical guardrails are immutable
+4. Ethical risk triggers cannot be disabled — even by CEO
+5. Pattern-based triggers use LLM classification with >0.7 confidence threshold and 24-hour rate limit
+6. Governance sector health is calculated from pending advisories, Red-Line events, and recent dissent
+7. Onboarding session state machine has clean transitions with ABANDONED path for Red-Line refusal
+8. Advisory display follows observation/concern/recommendation format from BOARD-GOVERNANCE-SPEC
+9. Board inter-member communication permitted ONLY within active BoardSession context
+
+**Spec Location:** `C:\Projects\MC-Cockpit\specs\BOARD-ADVISORY-RUNTIME-SPEC-v1.md`
+
+**Open Questions / Risks:**
+- Board member persona files not yet created — spec references them but doesn't define them
+- Pattern-based trigger detection depends on LLM classification quality — may need tuning in practice
+- Advisory rate limiting (24hr per trigger) is a starting point — may need CEO-configurable cadence
+- Onboarding session orchestration involves multiple sequential LLM calls — latency implications not addressed
+- Exact metric names (burn_rate_to_revenue_ratio, projected_cash_runway_months) need alignment with Finance data model when that spec exists
+
+**Status:** BSL-292 spec authored. Pending CEO review.
+
+---

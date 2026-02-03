@@ -1,25 +1,22 @@
 # Blacksite Labs – Repo Index
 
 ## Purpose
-This file is the entry point for all AI agents and humans.
-Read this first.
+This file is the map. It tells you what exists in this repo and where to find it.
+For operating instructions, read `CLAUDE.md`. For rules and invariants, read `conventions.md`.
 
 ## Canonical Files
-- VISION.md — Product north star (read-only unless CEO-approved)
-- ROADMAP.md — High-level sequencing and phases
-- DECISIONS.md — Append-only log of major decisions
-- RECENT_ACTIVITY.md — Short, AI-optimized summary of recent changes
-- conventions.md — Code and system rules
-- CLAUDE.md — Operating instructions for Claude Code
 
-## Agent Logs
-/agents/
-- One markdown file per AI persona
-- Each agent must:
-  - Read its own log at startup
-  - Append a short summary at shutdown
+| File | What It Is |
+|------|-----------|
+| `CLAUDE.md` | Operating instructions for Claude Code. Defines startup sequence, execution rules, shutdown procedure. Start here if you are an AI agent. |
+| `conventions.md` | **Constitutional source of truth.** All invariants, contracts, naming conventions, and system rules. Supersedes specs on conflicts. |
+| `DECISIONS.md` | Append-only log of material decisions and architectural choices. |
+| `RECENT_ACTIVITY.md` | Short summary of recent work across all agents. Updated after each session. |
+| `VISION.md` | **LOCKED — historical reference.** Explains the philosophy and metaphor behind Mission Control. Not authoritative on current specifics; conventions.md supersedes on all details. |
+| `ROADMAP.md` | ⚠️ **Empty — not yet populated.** Reserved for high-level sequencing and phases. |
 
-## Rules
-- Do not modify VISION.md without explicit approval
-- Update RECENT_ACTIVITY.md after meaningful work
-- Log major choices in DECISIONS.md
+## Specs (`/specs/`)
+Locked and active specification documents. These define *how* systems work. Where a spec and `conventions.md` conflict, `conventions.md` wins.
+
+## Agent Logs (`/agents/`)
+One markdown file per AI persona. Agents read their own log at startup and append a summary at shutdown. See `CLAUDE.md` for the full procedure.

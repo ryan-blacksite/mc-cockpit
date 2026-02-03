@@ -132,7 +132,7 @@ These outputs populate the Command sector of the Cockpit.
 | **CEO Request** | CEO explicitly asks for Board input | Full Board responds |
 
 **Trigger Thresholds (Configurable by CEO):**
-- Financial thresholds may be adjusted via Configuration
+- Financial thresholds may be adjusted via Finance sector
 - Default values above apply until changed
 - CEO may disable non-critical triggers (but not Red-Line triggers)
 
@@ -291,7 +291,7 @@ These principles override any ambiguity in the rules above.
 ### For the System
 
 - Onboarding session outputs feed directly to Command sector
-- Advisory triggers should be configurable in Configuration sector
+- Advisory triggers should be configurable in Finance sector
 - Red-Line detection should be built into session flow, not retrofitted
 - Board advisory logs should be stored in Memory & Intelligence
 

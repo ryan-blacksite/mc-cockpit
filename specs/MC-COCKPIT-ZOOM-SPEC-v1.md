@@ -42,7 +42,7 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 │                                                                         │
 │   ┌───────────────┐   ┌───────────────────┐   ┌───────────────────┐     │
 │   │               │   │                   │   │                   │     │
-│   │ ORGANIZATION  │   │     COMMAND       │   │    OUTCOMES       │     │
+│   │ ORGANIZATION  │   │     COMMAND       │   │    METRICS        │     │
 │   │               │   │   (CEO Intent)    │   │    & HEALTH       │     │
 │   │   [medium]    │   │     [medium]      │   │     [medium]      │     │
 │   │               │   │                   │   │                   │     │
@@ -50,14 +50,14 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 │                                                                         │
 │   ┌─────────┐   ┌─────────────────────────────────┐   ┌─────────────┐   │
 │   │         │   │                                 │   │             │   │
-│   │GOVERNNCE│   │            FINANCE              │   │   MEMORY &  │   │
+│   │OPERATIONS│   │            FINANCE              │   │ INTELLIGENCE│   │
 │   │         │   │                                 │   │ INTELLIGENCE│   │
 │   │ [small] │   │            [large]              │   │   [small]   │   │
 │   │         │   │                                 │   │             │   │
 │   └─────────┘   └─────────────────────────────────┘   └─────────────┘   │
 │                                                                         │
 │   ┌─────────────────────────────────────────────────────────────────┐   │
-│   │                      CONFIGURATION [collapsed bar]              │   │
+│   │                 FINANCE SETTINGS [collapsed bar]                 │   │
 │   └─────────────────────────────────────────────────────────────────┘   │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
@@ -69,13 +69,12 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 
 | Sector | Type Constant | Default Size | Position Hint | Content Domain |
 |--------|---------------|--------------|---------------|----------------|
-| Command | `COMMAND` | Medium | Top-center | CEO intent, priorities, pending decisions, overrides |
-| Governance | `GOVERNANCE` | Small | Bottom-left | Board, advisory sessions, governance health |
+| Command | `COMMAND` | Medium | Top-center | CEO intent, priorities, pending decisions, overrides, Board advisory panel |
 | Organization | `ORGANIZATION` | Medium | Top-left | Departments, agents, workforce structure |
-| Outcomes | `OUTCOMES` | Medium | Top-right | Goals, metrics, health signals, attention items |
-| Finance | `FINANCE` | Large | Bottom-center | Burn, runway, budgets, spend tracking |
-| Memory | `MEMORY` | Small | Bottom-right | Decisions, audit logs, knowledge base |
-| Configuration | `CONFIGURATION` | Collapsed | Bottom-full | Settings, integrations, preferences |
+| Operations | `OPERATIONS` | Small | Bottom-left | Board advisory records (stored), operational oversight |
+| Finance | `FINANCE` | Large | Bottom-center | Burn, runway, budgets, spend tracking, configuration settings |
+| Intelligence | `INTELLIGENCE` | Small | Bottom-right | Decisions, audit logs, knowledge base, advisory feed |
+| Metrics | `METRICS` | Medium | Top-right | Goals, metrics, health signals, attention items |
 
 ### 1.4 Sector Size Classes
 
@@ -126,7 +125,7 @@ Zoom state is UI-owned. Runtime objects do NOT store zoom; they react to it.
 ```typescript
 ZoomState {
   // Current position
-  current_level: 1 | 2 | 3 | 4  // L1=God View, L2=Sector, L3=Detail, L4+=Deep
+  current_level: 1 | 2 | 3 | 4  // L1=Global View, L2=Sector, L3=Detail, L4+=Deep
   current_sector: SectorType | null  // null at L1
   current_target: UUID | null  // ID of focused element (agent, dept, task, etc.)
   
@@ -245,12 +244,12 @@ function zoomTo(stack_index: number) {
 
 | Level | Name | Scope | Visibility | Controllability |
 |-------|------|-------|------------|-----------------|
-| L1 | God View | Full cockpit | All 6 sectors, summary data | Navigation only |
+| L1 | Global View | Full cockpit | All 6 sectors, summary data | Navigation only |
 | L2 | Sector View | Single sector | Expanded sector, sub-areas visible | Sector-scoped actions |
 | L3 | Detail View | Single element | Full element detail | Full element control |
 | L4+ | Deep Dive | Nested element | Child elements | Child element control |
 
-### 3.2 L1: God View (Cockpit)
+### 3.2 L1: Global View (Cockpit)
 
 **What's visible:**
 - All 6 sector panels simultaneously
@@ -448,7 +447,7 @@ At any zoom level, you can SEE summary information from levels below, but you ca
 
 ### 4.2 Full Matrix
 
-| Data Type | L1 (God View) | L2 (Sector) | L3 (Detail) | L4+ (Deep) |
+| Data Type | L1 (Global View) | L2 (Sector) | L3 (Detail) | L4+ (Deep) |
 |-----------|---------------|-------------|-------------|------------|
 | **Sector health** | See | See + Acknowledge | See | — |
 | **Sub-area list** | See (count only) | See (full list) | — | — |
@@ -464,7 +463,7 @@ At any zoom level, you can SEE summary information from levels below, but you ca
 
 Command sector at L1 may expose emergency kill switches that violate the zoom-control rule. These are:
 - Pause all AI activity
-- Emergency escalation to Board
+- Request Board Advisory (non-blocking, advisory-only)
 - System-wide override
 
 These controls require double-confirmation regardless of zoom level.
@@ -591,7 +590,7 @@ The goal is spatial continuity—the user should feel they are moving through a 
 
 ## 6. Sector-Specific L1 Content
 
-This section defines the 4–8 live data elements shown per sector at L1 (God View).
+This section defines the 4–8 live data elements shown per sector at L1 (Global View).
 
 ### 6.1 Command Sector (L1)
 
@@ -606,15 +605,15 @@ CommandL1Content {
 }
 ```
 
-### 6.2 Governance Sector (L1)
+### 6.2 Operations Sector (L1)
 
 ```typescript
-GovernanceL1Content {
+OperationsL1Content {
   data_elements: [
     { type: 'avatar_row', label: 'Board', avatars: board_members_with_status },
     { type: 'metric', label: 'Open Advisories', value: advisory_count },
     { type: 'status_list', label: 'Recent Sessions', items: last_2_sessions_summary },
-    { type: 'metric', label: 'Governance Health', value: health_label, trend: trend_direction },
+    { type: 'metric', label: 'Operations Health', value: health_label, trend: trend_direction },
   ]
 }
 ```
@@ -633,10 +632,10 @@ OrganizationL1Content {
 }
 ```
 
-### 6.4 Outcomes Sector (L1)
+### 6.4 Metrics Sector (L1)
 
 ```typescript
-OutcomesL1Content {
+MetricsL1Content {
   data_elements: [
     { type: 'metric', label: 'North Star', value: primary_metric_value, trend: trend },
     { type: 'chart_mini', label: 'Goal Progress', data: goal_completion_percentages, chart_type: 'bar' },
@@ -660,10 +659,10 @@ FinanceL1Content {
 }
 ```
 
-### 6.6 Memory Sector (L1)
+### 6.6 Intelligence Sector (L1)
 
 ```typescript
-MemoryL1Content {
+IntelligenceL1Content {
   data_elements: [
     { type: 'metric', label: 'Decisions Logged', value: decision_count },
     { type: 'metric', label: 'Knowledge Entries', value: knowledge_count },
@@ -672,13 +671,13 @@ MemoryL1Content {
 }
 ```
 
-### 6.7 Configuration Sector (L1 - Collapsed)
+### 6.7 Finance Settings Bar (L1 - Collapsed)
 
 When collapsed, shows only:
 
 ```typescript
-ConfigurationL1Collapsed {
-  label: 'Configuration'
+FinanceSettingsBar {
+  label: 'Finance Settings'
   expand_icon: true
   quick_stats: 'Pulse: 15min | Integrations: X active'
 }
@@ -697,10 +696,10 @@ Zoom state drives which runtime objects are queried and displayed.
 | L1 | All Sectors (summary) | Aggregate counts, health signals |
 | L2 (ORGANIZATION) | Sector + All Departments | Agent counts, blocker counts per dept |
 | L2 (COMMAND) | Sector + Pending Decisions | Active priorities, overrides |
-| L2 (GOVERNANCE) | Sector + Board Agents | Advisory sessions, recommendations |
-| L2 (OUTCOMES) | Sector + Goals | Metrics, health signals, attention items |
+| L2 (OPERATIONS) | Sector + Board Agents | Advisory sessions, recommendations |
+| L2 (METRICS) | Sector + Goals | Metrics, health signals, attention items |
 | L2 (FINANCE) | Sector + Budget data | Spend tracking, burn calculations |
-| L2 (MEMORY) | Sector + Recent entries | Decision log, audit log |
+| L2 (INTELLIGENCE) | Sector + Recent entries | Decision log, audit log |
 | L3 (Department) | Department + Agents | Tasks, escalations, projects |
 | L3 (Agent) | Agent + Tasks | Inbox, performance, history |
 | L3 (Task) | Task + Subtasks | Blockers, related items |
@@ -778,7 +777,7 @@ INV-CTRL-005: Dangerous actions require confirmation at any level
 
 ```
 INV-LAYOUT-001: Finance sector has largest allocation at L1
-INV-LAYOUT-002: Configuration sector collapsed by default at L1
+INV-LAYOUT-002: Finance settings collapsed bar by default at L1
 INV-LAYOUT-003: Sector arrangement stable (no dynamic reordering)
 INV-LAYOUT-004: Viewport < 768px shows "Desktop required" message
 ```

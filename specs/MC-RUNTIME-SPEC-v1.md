@@ -62,11 +62,11 @@ Mission Control has two startup paths:
    └─ If SUSPENDED: show suspension notice, block access
 3. LOAD all Sectors (parallel):
    - Command
-   - Governance
    - Organization
-   - Outcomes
-   - Memory
-   - Configuration
+   - Operations
+   - Finance
+   - Intelligence
+   - Metrics
 4. LOAD Agent roster
 5. LOAD pending Escalations
 6. LOAD active Tasks
@@ -105,9 +105,9 @@ Company {
   values: string[]
   strategic_priorities: string[]
   
-  // Configuration
+  // Finance
   pulse_interval_minutes: number = 15
-  default_autonomy: A1 | A2 | A3 = A1
+  default_autonomy: A1 | A2 | A3 = A2
   spending_authority_usd: number = 0
   
   // Relations
@@ -125,14 +125,14 @@ Top-level cockpit divisions. Fixed set of 6.
 Sector {
   id: UUID
   company_id: Company.id
-  type: COMMAND | GOVERNANCE | ORGANIZATION | OUTCOMES | MEMORY | CONFIGURATION
+  type: COMMAND | ORGANIZATION | OPERATIONS | FINANCE | INTELLIGENCE | METRICS
   
   // Health signals
   health: GREEN | YELLOW | RED
   attention_flags: AttentionFlag[]
   
   // Type-specific data (polymorphic)
-  data: CommandData | GovernanceData | OrganizationData | OutcomesData | MemoryData | ConfigurationData
+  data: CommandData | OperationsData | OrganizationData | MetricsData | IntelligenceData | FinanceData
 }
 
 // Sector-specific data structures
@@ -145,11 +145,13 @@ CommandData {
   global_overrides: Override[]
 }
 
-GovernanceData {
+OperationsData {
   board_members: Agent[]
   active_sessions: BoardSession[]
   advisory_history: Advisory[]
 }
+
+**Board storage vs surfacing:** Board advisory records are stored under Operations as oversight/governance records. Board advisories are surfaced via Command (Board Advisory panel) and Intelligence (Advisory feed). This does not create a 7th sector and does not make Operations the Board sector.
 
 OrganizationData {
   departments: Department[]
@@ -158,20 +160,20 @@ OrganizationData {
   active_blockers: number
 }
 
-OutcomesData {
+MetricsData {
   company_goals: Goal[]
   health_signals: HealthSignal[]
   risk_levels: RiskAssessment[]
   attention_items: AttentionItem[]
 }
 
-MemoryData {
+IntelligenceData {
   decisions: Decision[]
   audit_logs: AuditEntry[]
   knowledge_base: Document[]
 }
 
-ConfigurationData {
+FinanceData {
   pulse_interval: number
   autonomy_defaults: AutonomyConfig
   spending_limits: SpendingConfig
@@ -457,7 +459,7 @@ RULE: Memory is append-only (no edits, no deletes)
 | Agent Tier | Can Write |
 |------------|-----------|
 | CEO | Everything |
-| Board | Advisory content only (→ Governance sector) |
+| Board | No direct writes (advisory content is system-written) |
 | Chief | Own department, escalations up |
 | Manager | Own scope, escalations up, assignments down |
 | Lead | Own workstream, escalations up, assignments down |
@@ -521,7 +523,7 @@ INV-ESC-005: Board never appears in escalation path
 ### 4.5 Pulse Invariants
 
 ```
-INV-PULSE-001: Every ACTIVE agent executes Pulse on schedule
+INV-PULSE-001: Every ACTIVE operational agent executes Pulse on schedule (Board agents excluded)
 INV-PULSE-002: Pulse phases execute in order: SCAN → ASSESS → DECIDE → EXECUTE → LOG
 INV-PULSE-003: All Pulse actions logged to Memory
 INV-PULSE-004: Failed Pulse does not block other agents
@@ -565,6 +567,8 @@ EVERY company.pulse_interval_minutes:
   FOR agent IN agents ORDER BY tier ASC:  // CEO first, Workers last
     IF agent.human:
       SKIP  // Humans don't pulse
+    IF agent.id IN getOperationsData(company_id).board_members:
+      SKIP  // Board agents do not pulse
     
     pulse = createPulse(agent)
     
@@ -945,7 +949,7 @@ ChatMessage {
 - Edge Function handles LLM orchestration
 - System prompt includes agent's mandate, role, tier, and current context
 - Conversation history maintained for session continuity
-- All chat sessions logged to Memory sector
+- All chat sessions logged to Intelligence sector
 
 ### 8.4 Pulse Execution
 

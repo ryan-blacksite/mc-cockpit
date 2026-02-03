@@ -241,12 +241,12 @@ Every agent operates at one of three autonomy levels:
 
 | Tier | Role Type | Default Autonomy |
 |------|-----------|------------------|
-| Tier 2 | Chiefs | A1 (within domain) |
-| Tier 3 | Managers | A1 (within scope) |
-| Tier 4 | Leads | A1 (within workstream) |
-| Tier 5 | Workers | A1 (within task) |
+| Tier 2 | Chiefs | A2 (within domain) |
+| Tier 3 | Managers | A2 (within scope) |
+| Tier 4 | Leads | A2 (within workstream) |
+| Tier 5 | Workers | A2 (within task) |
 
-**Rationale:** Mission Control defaults to autonomous operation. Escalation is the exception.
+**Rationale:** Mission Control defaults to supervised operation for new agents. Autonomy can be elevated by the CEO.
 
 ### 2.3 Actions That ALWAYS Require Escalation to CEO (A3)
 
@@ -282,7 +282,7 @@ The CEO may adjust autonomy levels:
 - **Per Action Type:** Require approval for specific action categories
 - **Global:** Shift entire org to more/less autonomous posture
 
-Overrides are configured in the Configuration sector and persist until changed.
+Overrides are configured in the Finance sector and persist until changed.
 
 ---
 
@@ -292,7 +292,7 @@ Overrides are configured in the Configuration sector and persist until changed.
 
 The AI workforce operates on a recurring execution cycle. Each cycle is called a **Pulse**.
 
-**Default Pulse Interval:** 15 minutes (configurable in Configuration sector)
+**Default Pulse Interval:** 15 minutes (configurable in Finance sector)
 
 ### 3.2 Pulse Sequence
 
@@ -543,48 +543,65 @@ When work crosses domain boundaries:
 ```
 Agent {
   id: UUID
+  company_id: Company.id
   name: string
   role: string
-  tier: 2 | 3 | 4 | 5
-  department: string
-  reportsTo: Agent.id
-  autonomyLevel: A1 | A2 | A3
+  tier: 1 | 2 | 3 | 4 | 5
+  human: boolean
+  department_id: Department.id | null
+  reports_to: Agent.id | null
+  autonomy_level: A1 | A2 | A3
   mandate: string
-  currentTasks: Task[]
+  status: ACTIVE | INACTIVE | SUSPENDED
   inbox: Message[]
+  current_tasks: Task[]
+  last_pulse: datetime | null
+  performance_signals: PerformanceSignal[]
 }
 
 Pulse {
   id: UUID
-  agentId: Agent.id
-  timestamp: datetime
-  scanned: StateSnapshot
-  decisions: Decision[]
-  actions: Action[]
-  escalations: Escalation[]
-  logged: boolean
+  company_id: Company.id
+  agent_id: Agent.id
+  started_at: datetime
+  completed_at: datetime | null
+  phase: SCAN | ASSESS | DECIDE | EXECUTE | LOG | COMPLETE
+  scanned_state: StateSnapshot
+  decisions: PulseDecision[]
+  actions: PulseAction[]
+  escalations_sent: Escalation[]
+  status: RUNNING | COMPLETE | FAILED
+  error: string | null
 }
 
 Escalation {
   id: UUID
-  from: Agent.id
-  to: Agent.id
-  type: Awareness | ActionRequired
+  company_id: Company.id
+  from_agent_id: Agent.id
+  to_agent_id: Agent.id
+  type: AWARENESS | ACTION_REQUIRED
   trigger: string
   context: string
+  impact: string
   recommendation: string
-  status: Pending | Acknowledged | Resolved
+  status: PENDING | ACKNOWLEDGED | RESOLVED
+  created_at: datetime
+  acknowledged_at: datetime | null
+  resolved_at: datetime | null
+  resolution: string | null
+  related_task_id: Task.id | null
+  related_project_id: Project.id | null
 }
 ```
 
-### Configuration Defaults
+### Finance Defaults
 
 | Setting | Default | Location |
 |---------|---------|----------|
-| Pulse Interval | 15 minutes | Configuration sector |
-| Spending Authority | $0 (all spend escalates) | Configuration sector |
-| Default Autonomy | A1 (auto-execute) | Configuration sector |
-| Sync Comms Enabled | Yes | Configuration sector |
+| Pulse Interval | 15 minutes | Finance sector |
+| Spending Authority | $0 (all spend escalates) | Finance sector |
+| Default Autonomy | A2 (advise-first) | Finance sector |
+| Sync Comms Enabled | Yes | Finance sector |
 
 ---
 
