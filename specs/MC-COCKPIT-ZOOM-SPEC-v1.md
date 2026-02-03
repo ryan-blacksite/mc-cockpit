@@ -69,14 +69,16 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 
 ### 1.3 Sector Definitions
 
-| Sector | Type Constant | Default Size | Position Hint | Content Domain |
-|--------|---------------|--------------|---------------|----------------|
-| Command | `COMMAND` | Medium | Top-left | CEO intent, priorities, pending decisions, overrides, Board advisory panel |
-| Organization | `ORGANIZATION` | Medium | Top-center | Region title ("Organization"); department tiles shown directly, no outer container |
-| Operations | `OPERATIONS` | Small | Bottom-left | Board advisory records (stored), operational oversight |
-| Metrics | `METRICS` | Large | Bottom-center | Goals, metrics, health signals, attention items |
-| Intelligence | `INTELLIGENCE` | Small | Bottom-right | Decisions, audit logs, knowledge base, advisory feed |
-| Finance | `FINANCE` | Collapsed | Bottom bar | Platform settings, cadence, cost controls |
+| Sector | Type Constant | Display Label | Default Size | Position Hint | Content Domain |
+|--------|---------------|---------------|--------------|---------------|----------------|
+| Command | `COMMAND` | Command | Medium | Top-left | CEO intent, priorities, pending decisions, overrides, Board advisory panel |
+| Organization | `ORGANIZATION` | Organization | Medium | Top-center | Region title ("Organization"); department tiles shown directly, no outer container |
+| Operations | `OPERATIONS` | Operations | Small | Bottom-left | Board advisory records (stored), operational oversight |
+| Metrics | `METRICS` | Metrics & Health | Large | Bottom-center | Goals, metrics, health signals, attention items |
+| Intelligence | `INTELLIGENCE` | Intelligence | Small | Bottom-right | Decisions, audit logs, knowledge base, advisory feed |
+| Finance | `FINANCE` | Finance Settings | Collapsed | Bottom bar | Platform settings, cadence, cost controls |
+
+**Display label disambiguation:** The canonical sector name and type constant for the Metrics sector is `METRICS` (per conventions.md S-2). The L1 display label is **"Metrics & Health"** to reflect its expanded scope at the dashboard level. Code and data models use `METRICS`; UI renders "Metrics & Health."
 
 **Top-right region (medium):** Displays four business-category tiles — **Customers**, **Growth**, **Product & Delivery**, **People**. These tiles provide an at-a-glance view of key operational dimensions at L1.
 
