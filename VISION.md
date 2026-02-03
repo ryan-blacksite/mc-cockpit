@@ -228,7 +228,7 @@ Operations houses Board advisory records and governance oversight. The Board adv
 ________________________________________
 The Organization
 The heart of the company. One sector containing all business units.
-At Level 1: Shows a single tile with aggregate company health—headcount, burn, velocity, blockers.
+At Level 1: Displays a region title ("Organization") with department tiles shown directly — no outer container box. Departments are visible at a glance with aggregate health indicators.
 Click to zoom into Level 2.
 ________________________________________
 Metrics & Health

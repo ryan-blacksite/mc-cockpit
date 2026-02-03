@@ -30,7 +30,7 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 | Layout style | Flexible spatial arrangement |
 | Sector count | 6 (fixed) |
 | Sector sizing | Unequal (variable by content importance) |
-| Center gravity | Command sector |
+| Center gravity | Organization sector (top-center) |
 | Aesthetic | Dense executive analytics dashboard |
 
 ### 1.2 Sector Arrangement
@@ -42,16 +42,18 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 │                                                                         │
 │   ┌───────────────┐   ┌───────────────────┐   ┌───────────────────┐     │
 │   │               │   │                   │   │                   │     │
-│   │ ORGANIZATION  │   │     COMMAND       │   │    METRICS        │     │
-│   │               │   │   (CEO Intent)    │   │    & HEALTH       │     │
-│   │   [medium]    │   │     [medium]      │   │     [medium]      │     │
-│   │               │   │                   │   │                   │     │
-│   └───────────────┘   └───────────────────┘   └───────────────────┘     │
+│   │    COMMAND    │   │   Organization    │   │  Customers        │     │
+│   │  (CEO Intent) │   │  (region title;   │   │  Growth           │     │
+│   │   [medium]    │   │   dept tiles      │   │  Product &        │     │
+│   │               │   │   shown directly, │   │   Delivery        │     │
+│   │               │   │   no container)   │   │  People           │     │
+│   └───────────────┘   │     [medium]      │   │     [medium]      │     │
+│                       └───────────────────┘   └───────────────────┘     │
 │                                                                         │
 │   ┌─────────┐   ┌─────────────────────────────────┐   ┌─────────────┐   │
 │   │         │   │                                 │   │             │   │
-│   │OPERATIONS│   │            FINANCE              │   │ INTELLIGENCE│   │
-│   │         │   │                                 │   │ INTELLIGENCE│   │
+│   │OPERATIONS│   │        METRICS & HEALTH         │   │ INTELLIGENCE│   │
+│   │         │   │                                 │   │             │   │
 │   │ [small] │   │            [large]              │   │   [small]   │   │
 │   │         │   │                                 │   │             │   │
 │   └─────────┘   └─────────────────────────────────┘   └─────────────┘   │
@@ -63,18 +65,22 @@ Execution-grade specification for Mission Control's cockpit layout and zoom inte
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Note:** This is a conceptual arrangement. Exact pixel positions are implementation-flexible, but relative sizing and Command centrality MUST be preserved.
+**Note:** This is a conceptual arrangement. Exact pixel positions are implementation-flexible, but relative sizing and Organization's top-center position MUST be preserved. Command occupies top-left; Metrics & Health occupies the large bottom-center region.
 
 ### 1.3 Sector Definitions
 
-| Sector | Type Constant | Default Size | Position Hint | Content Domain |
-|--------|---------------|--------------|---------------|----------------|
-| Command | `COMMAND` | Medium | Top-center | CEO intent, priorities, pending decisions, overrides, Board advisory panel |
-| Organization | `ORGANIZATION` | Medium | Top-left | Departments, agents, workforce structure |
-| Operations | `OPERATIONS` | Small | Bottom-left | Board advisory records (stored), operational oversight |
-| Finance | `FINANCE` | Large | Bottom-center | Burn, runway, budgets, spend tracking, configuration settings |
-| Intelligence | `INTELLIGENCE` | Small | Bottom-right | Decisions, audit logs, knowledge base, advisory feed |
-| Metrics | `METRICS` | Medium | Top-right | Goals, metrics, health signals, attention items |
+| Sector | Type Constant | Display Label | Default Size | Position Hint | Content Domain |
+|--------|---------------|---------------|--------------|---------------|----------------|
+| Command | `COMMAND` | Command | Medium | Top-left | CEO intent, priorities, pending decisions, overrides, Board advisory panel |
+| Organization | `ORGANIZATION` | Organization | Medium | Top-center | Region title ("Organization"); department tiles shown directly, no outer container |
+| Operations | `OPERATIONS` | Operations | Small | Bottom-left | Board advisory records (stored), operational oversight |
+| Metrics | `METRICS` | Metrics & Health | Large | Bottom-center | Goals, metrics, health signals, attention items |
+| Intelligence | `INTELLIGENCE` | Intelligence | Small | Bottom-right | Decisions, audit logs, knowledge base, advisory feed |
+| Finance | `FINANCE` | Finance Settings | Collapsed | Bottom bar | Platform settings, cadence, cost controls |
+
+**Display label disambiguation:** The canonical sector name and type constant for the Metrics sector is `METRICS` (per conventions.md S-2). The L1 display label is **"Metrics & Health"** to reflect its expanded scope at the dashboard level. Code and data models use `METRICS`; UI renders "Metrics & Health."
+
+**Top-right region (medium):** Displays four business-category tiles — **Customers**, **Growth**, **Product & Delivery**, **People**. These tiles provide an at-a-glance view of key operational dimensions at L1.
 
 ### 1.4 Sector Size Classes
 
@@ -618,10 +624,16 @@ OperationsL1Content {
 }
 ```
 
-### 6.3 Organization Sector (L1)
+### 6.3 Organization Region (L1)
+
+The Organization region at top-center displays as a region title ("Organization") with department tiles shown directly in the region. There is no visible outer container box wrapping the tiles.
 
 ```typescript
 OrganizationL1Content {
+  // Region title shown above department tiles (no enclosing container)
+  region_title: 'Organization'
+  show_container_box: false
+
   data_elements: [
     { type: 'avatar_row', label: 'C-Suite', avatars: chiefs_with_status },
     { type: 'metric', label: 'Total Headcount', value: total_agent_count },
@@ -632,32 +644,43 @@ OrganizationL1Content {
 }
 ```
 
-### 6.4 Metrics Sector (L1)
+### 6.3.1 Business-Category Tiles (L1 — Top-Right)
+
+Adjacent to the Organization region, the top-right area displays four business-category tiles. These tiles provide an at-a-glance summary of key operational dimensions.
 
 ```typescript
-MetricsL1Content {
+BusinessCategoryTiles {
+  tiles: [
+    { label: 'Customers', health: 'green' | 'yellow' | 'red', summary_stat: string },
+    { label: 'Growth', health: 'green' | 'yellow' | 'red', summary_stat: string },
+    { label: 'Product & Delivery', health: 'green' | 'yellow' | 'red', summary_stat: string },
+    { label: 'People', health: 'green' | 'yellow' | 'red', summary_stat: string },
+  ]
+}
+```
+
+### 6.4 Metrics & Health Region (L1 — Large, Bottom-Center)
+
+The Metrics & Health region occupies the large bottom-center position. It is the primary data-dense region at L1, providing the CEO with financial health, goals, and operational metrics in one consolidated view.
+
+```typescript
+MetricsHealthL1Content {
   data_elements: [
     { type: 'metric', label: 'North Star', value: primary_metric_value, trend: trend },
     { type: 'chart_mini', label: 'Goal Progress', data: goal_completion_percentages, chart_type: 'bar' },
     { type: 'count_badge', label: 'Attention Items', count: attention_count, severity: based_on_severity },
     { type: 'metric', label: 'Health', value: aggregate_health_label },
     { type: 'status_list', label: 'Key Metrics', items: top_3_metrics_with_status },
-  ]
-}
-```
-
-### 6.5 Finance Sector (L1)
-
-```typescript
-FinanceL1Content {
-  data_elements: [
     { type: 'metric', label: 'Burn Rate', value: monthly_burn, trend: trend },
     { type: 'metric', label: 'Runway', value: runway_months + ' months' },
     { type: 'chart_mini', label: 'Spend', data: spend_over_time, chart_type: 'line' },
-    { type: 'metric', label: 'Budget Utilization', value: percent_used + '%' },
   ]
 }
 ```
+
+### 6.5 Finance Sector (L1 — Collapsed Bar)
+
+Finance renders as a collapsed settings bar at the bottom of the viewport. Key financial metrics (Burn Rate, Runway, Spend) are surfaced in the Metrics & Health region (see 6.4). The Finance sector at L1 provides quick-glance platform settings only.
 
 ### 6.6 Intelligence Sector (L1)
 
@@ -671,15 +694,15 @@ IntelligenceL1Content {
 }
 ```
 
-### 6.7 Finance Settings Bar (L1 - Collapsed)
+### 6.7 Finance Settings Bar (L1 — Collapsed)
 
-When collapsed, shows only:
+The Finance sector's sole L1 representation. When collapsed, shows only:
 
 ```typescript
 FinanceSettingsBar {
   label: 'Finance Settings'
   expand_icon: true
-  quick_stats: 'Pulse: 15min | Integrations: X active'
+  quick_stats: 'Pulse: 15min | Integrations: X active | Budget: X%'
 }
 ```
 
@@ -776,10 +799,12 @@ INV-CTRL-005: Dangerous actions require confirmation at any level
 ### 8.4 Layout Invariants
 
 ```
-INV-LAYOUT-001: Finance sector has largest allocation at L1
-INV-LAYOUT-002: Finance settings collapsed bar by default at L1
+INV-LAYOUT-001: Metrics & Health region has largest allocation at L1 (bottom-center, large)
+INV-LAYOUT-002: Finance sector renders as collapsed settings bar at L1 (no standalone panel)
 INV-LAYOUT-003: Sector arrangement stable (no dynamic reordering)
 INV-LAYOUT-004: Viewport < 768px shows "Desktop required" message
+INV-LAYOUT-005: Organization region displays as title + department tiles with no outer container box
+INV-LAYOUT-006: Top-right region displays four business-category tiles (Customers, Growth, Product & Delivery, People)
 ```
 
 ### 8.5 Zoom Continuity Invariants

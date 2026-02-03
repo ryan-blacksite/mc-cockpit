@@ -247,7 +247,7 @@ Populate the seeded company with realistic demo data and expose REST APIs for th
 ### B-1: Render Cockpit Shell — Global View
 
 **Description:**
-Build the top-level cockpit layout showing all 6 sectors as a dense, information-rich dashboard. Dark blue / metallic aesthetic. Each sector rendered as a tile with health indicator, summary stats, and key metrics. This is the "mission control room" first impression.
+Build the top-level cockpit layout showing all 6 sectors as a dense, information-rich dashboard. Dark blue / metallic aesthetic. Layout per MC-COCKPIT-ZOOM-SPEC-v1: Organization as region title (top-center) with department tiles shown directly (no outer container); Metrics & Health as the large bottom-center region; four business-category tiles (Customers, Growth, Product & Delivery, People) at top-right; Finance as collapsed settings bar. This is the "mission control room" first impression.
 
 **The 6 Sectors (conventions.md S-2 — canonical names):**
 1. Command
@@ -258,12 +258,15 @@ Build the top-level cockpit layout showing all 6 sectors as a dense, information
 6. Metrics
 
 **Acceptance Criteria:**
-1. All 6 sectors render as distinct visual tiles in a cohesive grid/layout
-2. Each tile shows: sector name, health indicator (green/yellow/red), 2–3 summary stats
-3. Dark blue / metallic design language — not generic Material Design
-4. Layout is responsive but optimized for desktop-first
-5. Tiles are clickable (Organization navigates to drill-down; others show placeholder)
-6. Data comes from API (K-6), not hardcoded
+1. All 6 sectors render in the spatial layout defined by MC-COCKPIT-ZOOM-SPEC-v1
+2. Organization region shows title + department tiles directly (no outer container box)
+3. Metrics & Health occupies the large bottom-center region with health indicators and key metrics
+4. Four business-category tiles (Customers, Growth, Product & Delivery, People) render at top-right
+5. Finance renders as collapsed settings bar at bottom
+6. Dark blue / metallic design language — not generic Material Design
+7. Layout is responsive but optimized for desktop-first
+8. Tiles are clickable (Organization navigates to drill-down; others show placeholder)
+9. Data comes from API (K-6), not hardcoded
 
 **Spec References:** conventions.md S-2 (sector definitions), MC-COCKPIT-ZOOM-SPEC-v1 (Global View definition)
 
