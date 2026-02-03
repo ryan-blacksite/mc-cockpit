@@ -372,3 +372,33 @@ All Phase 3 implementation work must follow this roadmap. Changes require CEO ap
 **Principle Applied:** Targeted phrase-level swaps instead of global word-boundary replacements. Sector names appear only where they are used *as sector names*, not where the same word appears in ordinary English.
 
 ---
+
+### 2026-02-03 — Global View (L1) Layout Realignment
+
+**Decision:** Realign the Global View layout to reflect updated region semantics
+**Artifacts:** `specs/MC-COCKPIT-ZOOM-SPEC-v1.md` (primary), `VISION.md`, `ROADMAP.md`
+**Authority:** CEO
+**Supersedes:** Cockpit & Zoom Spec v1 layout decisions (2026-02-02) — specifically Finance as Large/bottom-center and Metrics as Medium/top-right
+
+**Layout Changes:**
+
+1. **Organization** — Stays top-center (medium). Now described as a region title ("Organization") with department tiles shown directly. No visible outer container box.
+   - *Rationale:* Organization is the company's structural backbone; presenting department tiles directly at L1 gives the CEO immediate departmental awareness without requiring zoom.
+
+2. **Metrics & Health** — Moved from top-right (medium) to bottom-center (large). Now the primary data-dense region at L1. Incorporates key financial health metrics (Burn Rate, Runway, Spend) alongside goals and health signals.
+   - *Rationale:* Metrics & Health is the CEO's daily situational awareness panel; it deserves the largest allocation.
+
+3. **Four business-category tiles** — Top-right (medium) now shows Customers, Growth, Product & Delivery, People. These replace the old Metrics & Health position.
+   - *Rationale:* Provides at-a-glance business dimension coverage at L1.
+
+4. **Finance** — Demoted from large/bottom-center to collapsed settings bar. Key financial metrics surfaced in Metrics & Health instead.
+   - *Rationale:* Finance sector (platform controls) is accessed less frequently than financial health data. The collapsed bar preserves access while freeing layout space.
+
+5. **Command** — Moved from top-center to top-left (medium). Organization takes the center position.
+
+**Additional Changes:**
+- `SESSION_CHANGES.md` deleted (no longer maintained per CEO direction)
+- VISION.md Organization description updated to remove "single tile" language
+- ROADMAP.md B-1 acceptance criteria updated to match new layout
+
+---
