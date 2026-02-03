@@ -1,11 +1,12 @@
 # Mission Control Vision
 
 **Status:** Living document (versioned)  
-**Current Version:** v1.1  
+**Current Version:** v1.2  
 **Owner:** CEO  
 **Last Updated:** 2026-02-03
 
 ## Change Log
+- 2026-02-03  v1.2: Fixed mechanical rename damage — corrected "Intelligence & Intelligence" to "Intelligence", restored prose where generic words (memory, configuration, governance, outcomes) were incorrectly replaced with sector names, aligned Operations sector with conventions.md (not "the Board sector"), added Finance sector/department disambiguation.
 - 2026-02-03  v1.1: Converted VISION.md from LOCKED to versioned living doc. Updated sector naming to canonical set. Added change log + clarified authority model.
 
 ---
@@ -27,7 +28,7 @@ Table of Contents
    - Examples of Zoom = Authority in Action
 6. The Cockpit Structure
    - Level 1: The Cockpit (God View)
-   - Level 1 Sectors (Command, Operations, The Organization, Metrics & Health, Intelligence & Intelligence, Finance)
+   - Level 1 Sectors (Command, Operations, The Organization, Metrics & Health, Intelligence, Finance)
    - Sector Boundaries & Exclusions
    - Level 2: The Organization (Business Units)
    - Level 3: Department Detail
@@ -53,7 +54,7 @@ ________________________________________
 What Mission Control Is
 Mission Control is an AI-owned operating system that allows one human (the CEO) to command a real, functioning company from a single, unified cockpit.
 You do not manage tools. You do not manage people. You set intent.
-Mission Control supplies the structure, execution, Operations, Intelligence, and cadence of an elite organization—board to workforce—entirely run by AI.
+Mission Control supplies the structure, execution, oversight, institutional knowledge, and cadence of an elite organization—board to workforce—entirely run by AI.
 This is not an assistant. It is not a dashboard of apps. It is a living company that reports to you.
 ________________________________________
 The Core Idea
@@ -62,9 +63,9 @@ Mission Control provides, by default:
 •	A Board (advisory in practice)
 •	A full C-suite
 •	Managers and workers
-•	Operations rhythms
+•	Governance rhythms
 •	Execution engines
-•	Organizational Intelligence
+•	Organizational memory
 All AI. No hiring. No tool sprawl. No operational babysitting.
 ________________________________________
 The CEO Model
@@ -139,7 +140,7 @@ You have zoomed into a specific element—a department, a project, an agent, a d
 - *Controls available:* All element-specific controls (create, edit, delete, configure, override)
 
 **Level 4+: Deep Dive (Fractal Depth)**
-The pattern continues infinitely. A project contains tasks. A task contains subtasks. An agent contains Intelligence and action logs. Every element can be zoomed into further, revealing more detail and more control.
+The pattern continues infinitely. A project contains tasks. A task contains subtasks. An agent contains memory and action logs. Every element can be zoomed into further, revealing more detail and more control.
 
 ________________________________________
 The Fractal Principle
@@ -157,8 +158,8 @@ At every zoom level, there is a distinction between what is *visible* (read-only
 |------------|---------|---------------|
 | **Global (L1)** | All sectors, headline status, health indicators, attention flags, aggregate metrics | Navigation only—click to zoom |
 | **Sector (L2)** | All sub-elements within the sector, detailed status, trends, assigned owners, blockers | Sector-scoped actions: prioritize, acknowledge, triage, reassign at sector level |
-| **Sub-Panel (L3)** | Full element detail: history, logs, Intelligence, Finance, relationships, state | Full control: create, edit, delete, configure, execute, adjust autonomy, override |
-| **Deep Dive (L4+)** | Granular internals: subtasks, action history, decision rationale, raw data | Granular control: modify individual records, replay actions, edit Intelligence |
+| **Sub-Panel (L3)** | Full element detail: history, logs, memory, configuration, relationships, state | Full control: create, edit, delete, configure, execute, adjust autonomy, override |
+| **Deep Dive (L4+)** | Granular internals: subtasks, action history, decision rationale, raw data | Granular control: modify individual records, replay actions, edit memory |
 
 **The rule:** Status bubbles up. Control requires descent.
 
@@ -200,10 +201,10 @@ Level 1: The Cockpit (God View)
 When fully zoomed out, the CEO sees six primary sectors:
 Sector	Purpose
 Command	CEO's intent, mission, priorities, overrides
-Operations	The Board, strategic challenges, approvals
+Operations	Oversight, governance, Board advisory records
 The Organization	All business units and their Chiefs
 Metrics & Health	Goals, momentum, risks, signals
-Intelligence & Intelligence	Decisions, history, knowledge, logs
+Intelligence	Decisions, history, knowledge, logs
 Finance	System settings, cadence, cost controls
 Each sector displays headline status at a glance. Click to zoom deeper.
 ________________________________________
@@ -216,13 +217,14 @@ Command (CEO)
 •	Decision queue awaiting CEO input
 This is where intent is set and corrected. The throne room.
 ________________________________________
-Operations (The Board)
-•	Advisory challenges and strategic pressure-testing
+Operations
+•	Oversight and governance records
+•	Board advisory challenges and strategic pressure-testing
 •	Risk surfacing and scenario analysis
 •	Approval ceremonies for major, irreversible decisions
 •	Logged dissent and rationale
 •	Board meeting history and resolutions
-The Board advises. The CEO decides. Dissent is always on the record.
+Operations houses Board advisory records and governance oversight. The Board advises. The CEO decides. Operations is not "the Board sector"—it is where oversight and governance records live (see conventions.md §1.2).
 ________________________________________
 The Organization
 The heart of the company. One sector containing all business units.
@@ -237,7 +239,7 @@ Metrics & Health
 •	The "Check Engine" lights for the whole operation
 This is situational awareness for the CEO.
 ________________________________________
-Intelligence & Intelligence
+Intelligence
 •	Decisions and their rationale
 •	Institutional context and history
 •	Audit logs and compliance trails
@@ -245,14 +247,14 @@ Intelligence & Intelligence
 •	Learning patterns and compounding insights
 The company remembers everything. This is how it gets smarter over time.
 ________________________________________
-Finance
+Finance (Platform Controls)
 •	Cadence settings (how often the AI workforce activates)
 •	Cost controls and spending limits
 •	Agent autonomy levels (global defaults)
 •	Notification and escalation preferences
 •	Integration credentials and API keys
 •	Data retention and privacy settings
-This is not a department—it's the control panel for the cockpit itself.
+This is not the Finance department (CFO)—it's the control panel for the cockpit itself. The canonical sector enum is `Finance`; use "Finance (Platform Controls)" in prose where the department collision creates ambiguity.
 ________________________________________
 Sector Boundaries & Exclusions
 
@@ -270,20 +272,21 @@ Each sector has a defined scope. Clean boundaries prevent confusion, reduce cogn
 
 *What Does NOT Belong:*
 - Operational execution details → The Organization
-- Decisions already made and closed → Intelligence & Intelligence
-- System settings and technical Finance → Finance
+- Decisions already made and closed → Intelligence
+- System settings and technical configuration → Finance
 - Performance dashboards and health metrics → Metrics & Health
 - Board deliberations and advisory proceedings → Operations
 - Individual department goals or KPIs → The Organization (department level)
 
-*Boundary Principle:* Command is for setting intent, not monitoring Metrics or managing execution. If you're watching rather than directing, you're in the wrong sector.
+*Boundary Principle:* Command is for setting intent, not monitoring metrics or managing execution. If you're watching rather than directing, you're in the wrong sector.
 
 ________________________________________
 
-**Operations (The Board)**
+**Operations**
 
 *What Belongs:*
-- Advisory challenges and strategic pressure-testing
+- Oversight and governance records
+- Board advisory challenges and strategic pressure-testing
 - Risk surfacing and scenario analysis
 - Approval ceremonies for major, irreversible decisions
 - Logged dissent and rationale
@@ -294,11 +297,11 @@ ________________________________________
 - CEO directives and standing orders → Command
 - Operational decisions and tactical choices → The Organization
 - Real-time risk monitoring and alerts → Metrics & Health
-- Decision execution logs and audit trails → Intelligence & Intelligence
-- System Finance and preferences → Finance
+- Decision execution logs and audit trails → Intelligence
+- System configuration and preferences → Finance
 - Day-to-day department management → The Organization
 
-*Boundary Principle:* Operations is for deliberation and challenge, not direction or execution. The Board advises; it does not command.
+*Boundary Principle:* Operations is for oversight, governance, and deliberation—not direction or execution. Board advisory records are stored here, but Operations is not "the Board sector" (see conventions.md §1.2). The Board advises; it does not command.
 
 ________________________________________
 
@@ -307,16 +310,16 @@ ________________________________________
 *What Belongs:*
 - All business units (Finance, Operations, Product, Technology, Marketing, Sales, Legal, External Relations, People)
 - Chiefs and their departments
-- Department-level workforce, tools, Intelligence, and execution pipelines
+- Department-level workforce, tools, knowledge, and execution pipelines
 - Operational work product and deliverables
 - Inter-department coordination and handoffs
 
 *What Does NOT Belong:*
 - CEO-level intent and strategic priorities → Command
-- Board-level Operations and advisory content → Operations
+- Board-level oversight and advisory content → Operations
 - Company-wide aggregate health and signals → Metrics & Health
-- Cross-cutting institutional Intelligence and audit logs → Intelligence & Intelligence
-- Global system settings and platform Finance → Finance
+- Cross-cutting institutional memory and audit logs → Intelligence
+- Global system settings and platform configuration → Finance
 
 *Boundary Principle:* The Organization is where work happens. It contains everything that has an owner, a mandate, and execution responsibility. If it's company-wide awareness or system-level control, it lives elsewhere.
 
@@ -336,14 +339,14 @@ ________________________________________
 - Setting or modifying goals → Command (company-level) or The Organization (department-level)
 - Execution of remediation work → The Organization
 - Root cause investigation and deep analysis → Zoom into Organization or Intelligence
-- Historical trend archives → Intelligence & Intelligence
+- Historical trend archives → Intelligence
 - Adjusting alert thresholds or sensitivity → Finance
 
 *Boundary Principle:* Metrics & Health is read-only situational awareness. It tells you *what* is happening, not *why* it happened or *how* to fix it. Diagnosis and action require zooming elsewhere.
 
 ________________________________________
 
-**Intelligence & Intelligence**
+**Intelligence**
 
 *What Belongs:*
 - Decisions and their rationale (closed decisions)
@@ -357,14 +360,16 @@ ________________________________________
 - Active decision-making or open decisions → Command or Operations
 - Live operational status or real-time metrics → Metrics & Health
 - Execution of work or task management → The Organization
-- System Finance or platform settings → Finance
+- System configuration or platform settings → Finance
 - Forward-looking strategy or future planning → Command or Operations
 
-*Boundary Principle:* Intelligence & Intelligence is the rearview mirror—what happened, why, and what was learned. It is not for present-tense operations or future-tense planning.
+*Boundary Principle:* Intelligence is the rearview mirror—what happened, why, and what was learned. It is not for present-tense operations or future-tense planning.
 
 ________________________________________
 
-**Finance**
+**Finance (Platform Controls)**
+
+*Note: The Finance sector (platform settings, cost controls, cadence) is distinct from the Finance department (CFO — money, budgets, forecasts, billing) listed under The Organization. The canonical enum value is `Finance` for both, but context always distinguishes them: the sector controls the cockpit; the department manages money.*
 
 *What Belongs:*
 - Cadence settings (agent activation frequency)
@@ -379,11 +384,11 @@ ________________________________________
 - Business strategy or company priorities → Command
 - Organizational structure or reporting lines → The Organization
 - Performance monitoring or health dashboards → Metrics & Health
-- Decision history or institutional Intelligence → Intelligence & Intelligence
-- Risk Operations or approval workflows → Operations
-- Department-specific tool Finance → The Organization (department tools)
+- Decision history or institutional memory → Intelligence
+- Risk oversight or approval workflows → Operations
+- Department-specific tool configuration → The Organization (department tools)
 
-*Boundary Principle:* Finance is the control panel for the cockpit itself—not the company. If a setting affects how the platform behaves, it's here. If it affects how the business operates, it's elsewhere.
+*Boundary Principle:* The Finance sector is the control panel for the cockpit itself—not the company. If a setting affects how the platform behaves, it's here. If it affects how the business operates, it's elsewhere.
 
 ________________________________________
 Level 2: The Organization (Business Units)
@@ -443,7 +448,7 @@ From Execution Pipelines:
 •	Zoom into a task to see subtasks, comments, history
 From Department Workforce:
 •	Zoom into a specific AI agent
-•	See their mandate, recent actions, Intelligence
+•	See their mandate, recent actions, memory
 •	Review their performance, adjust autonomy
 From Department Tools:
 •	Zoom into a specific integration
@@ -470,7 +475,7 @@ Each AI has:
 •	A role and mandate
 •	Defined autonomy level
 •	Escalation rules
-•	Persistent Intelligence
+•	Persistent memory
 •	Performance signals
 The CEO may speak with any AI, at any level, at any time.
 ________________________________________
@@ -518,7 +523,7 @@ Chiefs hold delegated authority within their functional domains. They do not adv
 - Translate strategic intent into operational plans
 - Direct their departments and allocate resources
 - Make decisions within their mandate without escalation
-- Accountable for Metrics in their domain
+- Accountable for outcomes in their domain
 - May escalate to the CEO when triggers are met
 - Cannot override other Chiefs' domains without CEO involvement
 - Cannot contradict CEO directives
@@ -660,9 +665,9 @@ ________________________________________
 How It Works: The Pulse
 Behind the cockpit, Mission Control runs on a continuous heartbeat.
 AI agents operate on cadence loops—recurring cycles where they review changes, scan for signals, process tasks, and act according to their mandates. This is the autonomic nervous system of the company.
-The CEO doesn't see this machinery directly. They see the Metrics: work completed, risks surfaced, decisions queued.
-Cadence Finance
-Cadence settings live in Finance:
+The CEO doesn't see this machinery directly. They see the results: work completed, risks surfaced, decisions queued.
+Cadence Settings
+Cadence settings live in the Finance sector:
 •	Interval frequency: How often agents wake and act
 •	Escalation sensitivity: How quickly issues bubble up
 •	Autonomy thresholds: What agents can do without asking
@@ -726,7 +731,7 @@ Chiefs hold delegated authority within their functional domains. They do not adv
 - Translate strategic intent into operational plans
 - Direct their departments and allocate resources
 - Make decisions within their mandate without escalation
-- Accountable for Metrics in their domain
+- Accountable for outcomes in their domain
 - May escalate to the CEO when triggers are met
 - Cannot override other Chiefs' domains without CEO involvement
 - Cannot contradict CEO directives
@@ -897,17 +902,17 @@ When two agents at the same level disagree and cannot resolve independently, the
 
 **AI Self-Auditing**
 
-A future capability: AI agents periodically audit their own decisions, flag anomalies, and surface patterns that may indicate drift, bias, or inefficiency. Self-auditing would feed into Intelligence & Intelligence, creating a continuous improvement loop. This is not implemented in Phase 0 but represents a key maturity milestone.
+A future capability: AI agents periodically audit their own decisions, flag anomalies, and surface patterns that may indicate drift, bias, or inefficiency. Self-auditing would feed into the Intelligence sector, creating a continuous improvement loop. This is not implemented in Phase 0 but represents a key maturity milestone.
 
 *These extensions preserve the governing principle: autonomy by default, escalation by exception, CEO authority absolute.*
 ________________________________________
 Appendix: The Zoom at a Glance
 LEVEL 1 — THE COCKPIT (God View)
 ├── Command (CEO)
-├── Operations (Board)
+├── Operations
 ├── The Organization ─────────────────────────┐
 ├── Metrics & Health                         │
-├── Intelligence & Intelligence                     │
+├── Intelligence                     │
 └── Finance                             │
                                               │
 LEVEL 2 — THE ORGANIZATION ◄──────────────────┘
