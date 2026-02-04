@@ -1,7 +1,8 @@
 /**
  * Purpose: Renders a standard sector region card at L1 (Command, Operations, Intelligence).
  * Owns: Card chrome, header with health indicator and attention badge, data element grid.
- * Notes: Clickable — navigates to /zoom/<SECTOR> placeholder route (UI-7 observation + click-to-zoom).
+ * Notes: Clickable — navigates to /zoom/<SECTOR> placeholder route.
+ *        Metal panel style: gradient fill, sheen, soft shadow, inner highlight.
  */
 
 import { useNavigate } from 'react-router-dom';
@@ -22,24 +23,28 @@ export function RegionCard({ region }: Props) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'var(--color-bg-card)',
+        background: 'var(--color-bg-card)',
+        backgroundImage: 'var(--panel-gradient)',
         border: '1px solid var(--color-border)',
         borderRadius: 'var(--radius-md)',
-        padding: 'var(--space-lg)',
+        padding: 'var(--space-xl)',
         cursor: 'pointer',
-        transition: 'var(--transition-normal)',
+        transition: 'var(--transition-lift)',
         textAlign: 'left',
         width: '100%',
         color: 'inherit',
         outline: 'none',
+        boxShadow: 'var(--shadow-ambient), var(--panel-inner-highlight)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-bg-card-hover)';
+        e.currentTarget.style.backgroundImage = 'var(--panel-gradient-hover)';
         e.currentTarget.style.borderColor = 'var(--color-border-hover)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-lift), var(--panel-inner-highlight)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-bg-card)';
+        e.currentTarget.style.backgroundImage = 'var(--panel-gradient)';
         e.currentTarget.style.borderColor = 'var(--color-border)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-ambient), var(--panel-inner-highlight)';
       }}
       aria-label={`Navigate to ${region.displayLabel} sector`}
     >
@@ -49,16 +54,17 @@ export function RegionCard({ region }: Props) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginBottom: 'var(--space-md)',
+          marginBottom: 'var(--space-lg)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
           <HealthIndicator status={region.health} size="md" />
           <span
             style={{
-              fontSize: 'var(--font-size-md)',
-              fontWeight: 'var(--font-weight-semibold)' as unknown as number,
+              fontSize: 'var(--font-size-lg)',
+              fontWeight: 600,
               color: 'var(--color-text-heading)',
+              letterSpacing: '0.01em',
             }}
           >
             {region.displayLabel}
@@ -68,11 +74,11 @@ export function RegionCard({ region }: Props) {
           <span
             style={{
               fontSize: 'var(--font-size-xs)',
-              backgroundColor: 'var(--color-badge-warning)20',
+              backgroundColor: 'rgba(201,160,32,0.12)',
               color: 'var(--color-badge-warning)',
-              padding: '2px 6px',
-              borderRadius: 'var(--radius-sm)',
-              fontWeight: 'var(--font-weight-medium)' as unknown as number,
+              padding: '3px 8px',
+              borderRadius: 'var(--radius-pill)',
+              fontWeight: 500,
             }}
           >
             {region.attentionCount}
@@ -83,10 +89,10 @@ export function RegionCard({ region }: Props) {
       {/* Headline KPI */}
       <div
         style={{
-          fontSize: 'var(--font-size-sm)',
+          fontSize: 'var(--font-size-label)',
           color: 'var(--color-text-secondary)',
-          marginBottom: 'var(--space-md)',
-          fontWeight: 'var(--font-weight-medium)' as unknown as number,
+          marginBottom: 'var(--space-lg)',
+          fontWeight: 500,
         }}
       >
         {region.headlineKpi}

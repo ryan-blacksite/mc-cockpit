@@ -4,16 +4,18 @@
  * Notes: This file orchestrates layout only; child components handle their own rendering.
  *        Layout invariants enforced: INV-LAYOUT-001 through INV-LAYOUT-006.
  *
- *   Layout map (matches spec 1.2):
- *   ┌──────────────┬───────────────────┬──────────────────┐
- *   │  Command     │   Organization    │  Business Tiles  │
- *   │  (medium)    │   (medium)        │  (medium)        │
- *   ├──────┬───────┴───────────────────┴────────┬─────────┤
- *   │ Ops  │      Metrics & Health (large)      │  Intel  │
- *   │(sm)  │                                    │  (sm)   │
- *   ├──────┴────────────────────────────────────┴─────────┤
- *   │            Finance Settings [collapsed bar]          │
- *   └─────────────────────────────────────────────────────┘
+ *   Layout map (premium metal console):
+ *   ┌──────────┬──────────────────────────┬─────────────┐
+ *   │ Command  │   Business Window (hero)  │  Biz Tiles  │
+ *   │ (medium) │   + Organization overlay  │  (stacked)  │
+ *   │          ├──────────────────────────┤             │
+ *   │          │   Department tiles        │             │
+ *   ├──────────┼──────────────────────────┼─────────────┤
+ *   │   Ops    │   Metrics & Health (lg)   │    Intel    │
+ *   │   (sm)   │                          │    (sm)     │
+ *   ├──────────┴──────────────────────────┴─────────────┤
+ *   │           Finance Settings [collapsed bar]         │
+ *   └───────────────────────────────────────────────────┘
  */
 
 import { useData } from '../data/DataContext';
@@ -22,7 +24,7 @@ import { OrgDepartmentTile } from '../components/OrgDepartmentTile';
 import { BusinessCategoryTile } from '../components/BusinessCategoryTile';
 import { MetricsHealthPanel } from '../components/MetricsHealthPanel';
 import { FinanceSettingsBar } from '../components/FinanceSettingsBar';
-import { HealthIndicator } from '../components/HealthIndicator';
+import { BusinessWindowPanel } from '../components/BusinessWindowPanel';
 
 export function GlobalView() {
   const data = useData();
@@ -44,68 +46,51 @@ export function GlobalView() {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        padding: 'var(--space-xl)',
-        gap: 'var(--space-lg)',
+        padding: 'var(--space-2xl)',
+        gap: 'var(--space-xl)',
         maxWidth: 1600,
         margin: '0 auto',
       }}
     >
-      {/* ─── TOP ROW: Command | Organization | Business Tiles ─── */}
+      {/* ─── TOP ROW: Command | Business Window + Dept Tiles | Business Tiles ─── */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr 1fr',
-          gap: 'var(--space-lg)',
+          gridTemplateColumns: '280px 1fr 220px',
+          gap: 'var(--space-xl)',
           alignItems: 'start',
         }}
       >
         {/* Top-left: Command (medium) */}
         {command && <RegionCard region={command} />}
 
-        {/* Top-center: Organization (medium) — title + dept tiles, no outer container (INV-LAYOUT-005) */}
-        <div>
+        {/* Top-center: Business Window hero + Department tiles beneath */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-lg)' }}>
+          {/* Hero Business Window — the cockpit's main viewport */}
+          {organization && <BusinessWindowPanel organization={organization} />}
+
+          {/* Department tiles row beneath the hero panel */}
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 'var(--space-sm)',
-              marginBottom: 'var(--space-md)',
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+              gap: 'var(--space-md)',
             }}
           >
-            {organization && <HealthIndicator status={organization.health} size="md" />}
-            <span
-              style={{
-                fontSize: 'var(--font-size-md)',
-                fontWeight: 'var(--font-weight-semibold)' as unknown as number,
-                color: 'var(--color-text-heading)',
-              }}
-            >
-              Organization
-            </span>
-            {organization && organization.attentionCount > 0 && (
-              <span
-                style={{
-                  fontSize: 'var(--font-size-xs)',
-                  backgroundColor: 'var(--color-badge-warning)20',
-                  color: 'var(--color-badge-warning)',
-                  padding: '2px 6px',
-                  borderRadius: 'var(--radius-sm)',
-                  marginLeft: 'auto',
-                }}
-              >
-                {organization.attentionCount}
-              </span>
-            )}
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-sm)' }}>
             {departments.map((dept) => (
               <OrgDepartmentTile key={dept.id} department={dept} />
             ))}
           </div>
         </div>
 
-        {/* Top-right: Four business-category tiles (INV-LAYOUT-006) */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-sm)' }}>
+        {/* Top-right: Business category tiles stacked (INV-LAYOUT-006) */}
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 'var(--space-md)',
+          }}
+        >
           {businessTiles.map((tile) => (
             <BusinessCategoryTile key={tile.label} tile={tile} />
           ))}
@@ -116,10 +101,10 @@ export function GlobalView() {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: '200px 1fr 200px',
-          gap: 'var(--space-lg)',
+          gridTemplateColumns: '220px 1fr 220px',
+          gap: 'var(--space-xl)',
           flex: 1,
-          minHeight: 300,
+          minHeight: 280,
         }}
       >
         {/* Bottom-left: Operations (small) */}
