@@ -3,6 +3,7 @@
  * Owns: Primary data-dense region showing financial health, goals, and operational metrics.
  * Notes: Canonical type constant is METRICS; display label is "Metrics & Health" (spec 1.3).
  *        This is the largest region at L1 (INV-LAYOUT-001).
+ *        Metal panel: gradient fill, sheen, deep shadow, premium number typography.
  */
 
 import { useNavigate } from 'react-router-dom';
@@ -23,25 +24,29 @@ export function MetricsHealthPanel({ region }: Props) {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: 'var(--color-bg-card)',
+        background: 'var(--color-bg-card)',
+        backgroundImage: 'var(--panel-gradient)',
         border: '1px solid var(--color-border)',
-        borderRadius: 'var(--radius-md)',
-        padding: 'var(--space-xl)',
+        borderRadius: 'var(--radius-lg)',
+        padding: 'var(--space-2xl)',
         cursor: 'pointer',
-        transition: 'var(--transition-normal)',
+        transition: 'var(--transition-lift)',
         width: '100%',
         height: '100%',
         color: 'inherit',
         textAlign: 'left',
         outline: 'none',
+        boxShadow: 'var(--shadow-ambient), var(--panel-inner-highlight)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-bg-card-hover)';
+        e.currentTarget.style.backgroundImage = 'var(--panel-gradient-hover)';
         e.currentTarget.style.borderColor = 'var(--color-border-hover)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-lift), var(--panel-inner-highlight)';
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = 'var(--color-bg-card)';
+        e.currentTarget.style.backgroundImage = 'var(--panel-gradient)';
         e.currentTarget.style.borderColor = 'var(--color-border)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-ambient), var(--panel-inner-highlight)';
       }}
       aria-label="Navigate to Metrics & Health sector"
     >
@@ -51,7 +56,7 @@ export function MetricsHealthPanel({ region }: Props) {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          marginBottom: 'var(--space-lg)',
+          marginBottom: 'var(--space-xl)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-sm)' }}>
@@ -59,8 +64,9 @@ export function MetricsHealthPanel({ region }: Props) {
           <span
             style={{
               fontSize: 'var(--font-size-lg)',
-              fontWeight: 'var(--font-weight-semibold)' as unknown as number,
+              fontWeight: 600,
               color: 'var(--color-text-heading)',
+              letterSpacing: '0.01em',
             }}
           >
             Metrics &amp; Health
@@ -69,12 +75,12 @@ export function MetricsHealthPanel({ region }: Props) {
         {region.attentionCount > 0 && (
           <span
             style={{
-              fontSize: 'var(--font-size-sm)',
-              backgroundColor: 'var(--color-badge-warning)20',
+              fontSize: 'var(--font-size-xs)',
+              backgroundColor: 'rgba(201,160,32,0.12)',
               color: 'var(--color-badge-warning)',
-              padding: '2px 8px',
-              borderRadius: 'var(--radius-sm)',
-              fontWeight: 'var(--font-weight-medium)' as unknown as number,
+              padding: '3px 10px',
+              borderRadius: 'var(--radius-pill)',
+              fontWeight: 500,
             }}
           >
             {region.attentionCount} attention
@@ -82,37 +88,49 @@ export function MetricsHealthPanel({ region }: Props) {
         )}
       </div>
 
-      {/* KPI headline strip */}
+      {/* KPI headline strip — big bold numbers */}
       <div
         style={{
           display: 'flex',
-          gap: 'var(--space-xl)',
-          marginBottom: 'var(--space-lg)',
+          gap: 'var(--space-2xl)',
+          marginBottom: 'var(--space-xl)',
+          paddingBottom: 'var(--space-lg)',
+          borderBottom: '1px solid var(--color-border)',
           flexWrap: 'wrap',
         }}
       >
         {region.stats.map((stat, i) => (
-          <div key={i}>
-            <div style={{ fontSize: 'var(--font-size-xs)', color: 'var(--color-text-muted)' }}>{stat.label}</div>
-            <div
+          <div key={i} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <span
               style={{
-                fontSize: 'var(--font-size-md)',
-                fontWeight: 'var(--font-weight-semibold)' as unknown as number,
-                color: 'var(--color-text-heading)',
+                fontSize: 'var(--font-size-xs)',
+                color: 'var(--color-text-muted)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.06em',
+              }}
+            >
+              {stat.label}
+            </span>
+            <span
+              style={{
+                fontSize: 'var(--font-size-2xl)',
+                fontWeight: 700,
+                color: 'var(--color-text-number)',
+                lineHeight: 'var(--line-height-tight)',
               }}
             >
               {stat.value}
-            </div>
+            </span>
           </div>
         ))}
       </div>
 
-      {/* Data elements grid — 2-column layout for the large panel */}
+      {/* Data elements grid — 2-column for the large panel */}
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(140px, 1fr))',
-          gap: 'var(--space-md)',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))',
+          gap: 'var(--space-lg)',
           flex: 1,
         }}
       >

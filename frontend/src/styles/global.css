@@ -1,7 +1,7 @@
 /**
- * Purpose: Global base styles and resets for the cockpit app.
- * Owns: Body, root container, box-model resets, font defaults.
- * Notes: Dark aesthetic baseline. All component-specific styling lives in component CSS modules.
+ * Purpose: Global base styles for the cockpit — "metal console surface."
+ * Owns: Body, root container, resets, font defaults, background vignette.
+ * Notes: The background must feel like a single machined-metal surface, not flat.
  */
 
 @import './tokens.css';
@@ -21,10 +21,36 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
   color: var(--color-text-primary);
-  background-color: var(--color-bg-primary);
+  background: var(--color-bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+  line-height: var(--line-height-normal);
+}
+
+/* ── Metal console surface ──
+   Radial vignette + subtle noise grain to simulate brushed metal */
+#root {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 30%, var(--color-bg-secondary) 0%, var(--color-bg-primary) 55%, var(--color-bg-vignette-edge) 100%);
+}
+
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  /* Subtle noise grain via SVG data URI (barely visible brushed-metal texture) */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  opacity: 0.5;
+}
+
+#root > * {
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -35,4 +61,20 @@ a {
 button {
   font-family: inherit;
   cursor: pointer;
+}
+
+/* Scrollbar styling for the console */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.08);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.14);
 }

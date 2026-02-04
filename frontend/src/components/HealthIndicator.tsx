@@ -2,6 +2,7 @@
  * Purpose: Renders a colored health dot (green/yellow/red) with optional label.
  * Owns: Visual representation of health status across all cockpit regions.
  * Notes: Health indicators are visible at all zoom levels (INV-VIS-004).
+ *        Colors are muted (not neon) to match the premium metal console aesthetic.
  */
 
 import type { HealthStatus } from '../data/types';
@@ -25,7 +26,7 @@ interface Props {
 }
 
 export function HealthIndicator({ status, showLabel = false, size = 'sm' }: Props) {
-  const dotSize = size === 'sm' ? 8 : 12;
+  const dotSize = size === 'sm' ? 8 : 10;
 
   return (
     <span
@@ -40,7 +41,7 @@ export function HealthIndicator({ status, showLabel = false, size = 'sm' }: Prop
           backgroundColor: HEALTH_COLORS[status],
           display: 'inline-block',
           flexShrink: 0,
-          boxShadow: `0 0 6px ${HEALTH_COLORS[status]}60`,
+          boxShadow: `0 0 8px ${HEALTH_COLORS[status]}40`,
         }}
         aria-label={HEALTH_LABELS[status]}
       />

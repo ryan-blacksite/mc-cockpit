@@ -1,68 +1,100 @@
 /**
- * Purpose: Design tokens for the Mission Control cockpit UI.
- * Owns: Colors, spacing, typography, border radii — the visual vocabulary.
- * Notes: Dark blue / metallic aesthetic per ticket requirements. Desktop-first.
+ * Purpose: Design tokens for the Mission Control cockpit UI — "Premium Metal Console."
+ * Owns: Colors, gradients, shadows, spacing, typography, radii — the visual vocabulary.
+ * Notes: Dark graphite / machined-metal aesthetic. Electric-blue accent only.
+ *        Health colors are deliberately muted to avoid neon look.
  */
 
 :root {
-  /* Primary palette — dark blue / metallic */
-  --color-bg-primary: #0a0f1e;
-  --color-bg-secondary: #111827;
-  --color-bg-card: #1a2236;
-  --color-bg-card-hover: #222d45;
-  --color-bg-panel: #141c2f;
-  --color-bg-collapsed: #0d1322;
+  /* ── Console surface (the "metal body") ── */
+  --color-bg-primary: #080c18;
+  --color-bg-secondary: #0d1221;
+  --color-bg-vignette-edge: #04060e;
 
-  /* Accent / metallic highlights */
-  --color-border: #2a3550;
-  --color-border-hover: #3d5070;
-  --color-accent: #4e8cff;
-  --color-accent-dim: #2d5fa8;
+  /* ── Panel material (raised inserts) ── */
+  --color-bg-card: #111827;
+  --color-bg-card-hover: #161e30;
+  --color-bg-panel: #0f1525;
+  --color-bg-collapsed: #0a0f1c;
+  --panel-gradient: linear-gradient(180deg, rgba(255,255,255,0.025) 0%, transparent 60%);
+  --panel-gradient-hover: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+  --panel-inner-highlight: inset 0 1px 0 0 rgba(255,255,255,0.06);
 
-  /* Text */
-  --color-text-primary: #e8edf5;
-  --color-text-secondary: #8b97b0;
-  --color-text-muted: #5a667d;
-  --color-text-heading: #f0f4fc;
+  /* ── Borders (light-edge, minimal) ── */
+  --color-border: rgba(255,255,255,0.06);
+  --color-border-hover: rgba(255,255,255,0.10);
+  --color-border-active: rgba(56,152,255,0.25);
 
-  /* Health indicators */
-  --color-health-green: #22c55e;
-  --color-health-yellow: #eab308;
-  --color-health-red: #ef4444;
-  --color-health-neutral: #6b7280;
+  /* ── Shadows (ambient + lift) ── */
+  --shadow-ambient: 0 1px 3px rgba(0,0,0,0.40), 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-lift: 0 2px 8px rgba(0,0,0,0.50), 0 8px 24px rgba(0,0,0,0.30);
+  --shadow-inset: inset 0 1px 2px rgba(0,0,0,0.30);
+  --shadow-glow-blue: 0 0 20px rgba(56,152,255,0.10);
 
-  /* Severity badges */
-  --color-badge-normal: #4e8cff;
-  --color-badge-warning: #eab308;
-  --color-badge-critical: #ef4444;
+  /* ── Accent: electric blue ── */
+  --color-accent: #3898ff;
+  --color-accent-dim: #2468b8;
+  --color-accent-glow: rgba(56,152,255,0.15);
+  --color-accent-glow-strong: rgba(56,152,255,0.25);
 
-  /* Typography */
+  /* ── Text ── */
+  --color-text-primary: #d4dae6;
+  --color-text-secondary: #7d8ba3;
+  --color-text-muted: #4d5a73;
+  --color-text-heading: #e8edf8;
+  --color-text-number: #f0f4fc;
+
+  /* ── Health indicators (muted, not neon) ── */
+  --color-health-green: #3dbb6e;
+  --color-health-yellow: #c9a020;
+  --color-health-red: #cf4040;
+  --color-health-neutral: #555e70;
+
+  /* ── Severity badges ── */
+  --color-badge-normal: #3898ff;
+  --color-badge-warning: #c9a020;
+  --color-badge-critical: #cf4040;
+
+  /* ── Typography ── */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+
   --font-size-xs: 0.6875rem;   /* 11px */
-  --font-size-sm: 0.75rem;     /* 12px */
-  --font-size-base: 0.875rem;  /* 14px */
-  --font-size-md: 1rem;        /* 16px */
-  --font-size-lg: 1.125rem;    /* 18px */
-  --font-size-xl: 1.375rem;    /* 22px */
+  --font-size-sm: 0.75rem;     /* 12px  — labels */
+  --font-size-label: 0.8125rem;/* 13px  — secondary labels */
+  --font-size-base: 0.875rem;  /* 14px  — body */
+  --font-size-md: 1rem;        /* 16px  — secondary numbers */
+  --font-size-lg: 1.1875rem;   /* 19px  — region titles */
+  --font-size-xl: 1.375rem;    /* 22px  — section headings */
+  --font-size-2xl: 1.75rem;    /* 28px  — primary KPI numbers */
+  --font-size-3xl: 2.25rem;    /* 36px  — hero numbers */
+
   --font-weight-normal: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-  /* Spacing */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+
+  /* ── Spacing (generous breathing room) ── */
   --space-xs: 4px;
   --space-sm: 8px;
-  --space-md: 12px;
-  --space-lg: 16px;
-  --space-xl: 24px;
-  --space-2xl: 32px;
+  --space-md: 14px;
+  --space-lg: 20px;
+  --space-xl: 28px;
+  --space-2xl: 40px;
+  --space-3xl: 56px;
 
-  /* Layout */
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* ── Radii (softer, less boxy) ── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-pill: 100px;
 
-  /* Transitions */
+  /* ── Transitions ── */
   --transition-fast: 150ms ease;
   --transition-normal: 250ms ease;
+  --transition-lift: 250ms cubic-bezier(0.22, 1, 0.36, 1);
 }
