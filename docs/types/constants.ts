@@ -1,0 +1,107 @@
+// Mission Control — Runtime Enum Constants
+// Owns: Constants object with typed arrays for every Postgres enum.
+// Use these for runtime validation, dropdowns, and iteration — the
+// Database["public"]["Enums"] union types only exist at compile time.
+// See conventions.md CS-14, CS-19.
+//
+// Modified by Kori Willis — 2025-02-03
+
+export const Constants = {
+  public: {
+    Enums: {
+      agent_status: ["ACTIVE", "INACTIVE", "SUSPENDED"] as const,
+      autonomy_level: ["A1", "A2", "A3"] as const,
+      chat_message_role: ["USER", "AGENT"] as const,
+      chat_session_status: ["ACTIVE", "CLOSED"] as const,
+      company_status: ["ONBOARDING", "ACTIVE", "SUSPENDED"] as const,
+      department_type: [
+        "FINANCE",
+        "OPERATIONS",
+        "PRODUCT",
+        "TECHNOLOGY",
+        "MARKETING",
+        "SALES",
+        "LEGAL",
+        "EXTERNAL",
+        "PEOPLE",
+      ] as const,
+      escalation_status: ["PENDING", "ACKNOWLEDGED", "RESOLVED"] as const,
+      escalation_trigger: [
+        "TASK_BLOCKED",
+        "SCOPE_UNCLEAR",
+        "CONFLICTING_INSTRUCTIONS",
+        "RESOURCE_CONSTRAINT",
+        "CROSS_TEAM_DEPENDENCY",
+        "SCOPE_EXCEEDED",
+        "CROSS_DOMAIN_CONFLICT",
+        "IRREVERSIBLE_DECISION",
+        "BUDGET_REQUEST",
+        "EXTERNAL_COMMITMENT",
+        "MISSION_DRIFT",
+        "MATERIAL_RISK",
+        "TIMELINE_RISK",
+        "PERFORMANCE_ISSUE",
+        "MILESTONE",
+        "OPPORTUNITY",
+        "TASK_COMPLETE",
+        "ANOMALY",
+        "QUALITY_ISSUE",
+        "WORKSTREAM_COMPLETE",
+      ] as const,
+      escalation_type: ["AWARENESS", "ACTION_REQUIRED"] as const,
+      health_status: ["GREEN", "YELLOW", "RED"] as const,
+      memory_entry_type: [
+        "DECISION",
+        "ACTION",
+        "ESCALATION",
+        "COMMUNICATION",
+        "PULSE",
+        "AUDIT",
+        "KNOWLEDGE",
+      ] as const,
+      memory_importance: ["HIGH", "MEDIUM", "LOW"] as const,
+      message_priority: ["SYNC", "ASYNC"] as const,
+      message_type: [
+        "DIRECTIVE",
+        "REPORT",
+        "ESCALATION",
+        "COORDINATION",
+        "DELEGATION",
+      ] as const,
+      pulse_action_type: [
+        "TASK_PROGRESS",
+        "COMMUNICATION",
+        "STATUS_UPDATE",
+        "ESCALATION",
+        "DELEGATION",
+        "DOCUMENTATION",
+      ] as const,
+      pulse_decision_outcome: ["QUEUED", "PROPOSED", "ESCALATED"] as const,
+      pulse_phase: [
+        "SCAN",
+        "ASSESS",
+        "DECIDE",
+        "EXECUTE",
+        "LOG",
+        "COMPLETE",
+      ] as const,
+      pulse_status: ["RUNNING", "COMPLETE", "FAILED"] as const,
+      sector_type: [
+        "COMMAND",
+        "ORGANIZATION",
+        "OPERATIONS",
+        "FINANCE",
+        "INTELLIGENCE",
+        "METRICS",
+      ] as const,
+      task_priority: ["URGENT", "HIGH", "NORMAL", "LOW"] as const,
+      task_status: [
+        "PENDING",
+        "IN_PROGRESS",
+        "BLOCKED",
+        "COMPLETE",
+        "CANCELLED",
+      ] as const,
+    },
+  },
+} as const

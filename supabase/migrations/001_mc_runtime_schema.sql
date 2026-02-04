@@ -3,6 +3,14 @@
 -- Source: MC-RUNTIME-SPEC-v1 §2 (Core Runtime Objects)
 -- Author: Kori Willis — 2026-02-04
 -- Linear: BSL-302 (K-1 — Database Schema & RLS)
+--
+-- EXCEPTION (CS-15): This migration exceeds the 500-line hard limit.
+-- Reason: DDL migration scripts are atomic database transactions, not
+-- application source modules. Splitting would change execution semantics
+-- (partial schema states between migrations) and violate Postgres
+-- transactional DDL guarantees. conventions.md §7 scopes CS-14/CS-15
+-- to source files, services, and modules — not SQL migrations.
+-- See conventions.md §3.2 for database-specific conventions.
 -- ============================================================
 
 -- ============================================================
