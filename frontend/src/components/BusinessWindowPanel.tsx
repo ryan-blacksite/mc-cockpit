@@ -8,6 +8,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import type { RegionSummary } from '../data/types';
+import { useData } from '../data/DataContext';
 import { HealthIndicator } from './HealthIndicator';
 
 interface Props {
@@ -16,13 +17,8 @@ interface Props {
 
 export function BusinessWindowPanel({ organization }: Props) {
   const navigate = useNavigate();
-
-  const kpis = [
-    { label: 'MRR', value: '$42K', trend: '+18%' },
-    { label: 'Headcount', value: '24', trend: '+3' },
-    { label: 'Runway', value: '14mo', trend: 'Stable' },
-    { label: 'NPS', value: '62', trend: '+4' },
-  ];
+  const data = useData();
+  const kpis = data.getBusinessWindowKpis();
 
   return (
     <button

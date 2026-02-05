@@ -35,6 +35,9 @@ export interface DataProvider {
   /** Returns collapsed Finance settings bar data. */
   getFinanceSettingsBar(): FinanceSettingsBarData;
 
+  /** Returns headline KPIs for the Business Window panel. */
+  getBusinessWindowKpis(): { label: string; value: string; trend: string }[];
+
   // ─── L2 (Sector View) Queries ───
 
   /** Returns L2 content for the Organization sector (departments as sub-areas). */
