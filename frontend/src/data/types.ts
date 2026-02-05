@@ -112,3 +112,202 @@ export interface FinanceSettingsBarData {
   label: string;
   quickStats: string;
 }
+
+// _______________________________________________
+//            L2 SECTOR CONTENT (Spec 3.3)
+// _______________________________________________
+// Used to render sector detail views at L2.
+
+export interface L2SectorContent {
+  header: {
+    label: string;
+    subtitle: string | null;
+    health: HealthStatus;
+    healthDetail: string;
+  };
+  summaryCards: L2SummaryCard[];
+  subAreas: L2SubArea[];
+  sectorActions: L2Action[];
+}
+
+export interface L2SummaryCard {
+  label: string;
+  value: string | number;
+  detail: string | null;
+  chartData?: number[];
+}
+
+export interface L2SubArea {
+  id: string;
+  type: string; // 'department', 'board_member', 'goal', etc.
+  label: string;
+  health: HealthStatus;
+  summary: string;
+  attentionCount: number;
+}
+
+export interface L2Action {
+  id: string;
+  label: string;
+  actionType: 'acknowledge' | 'toggle' | 'quick_action';
+  targetId: string | null;
+  requiresConfirmation: boolean;
+}
+
+// _______________________________________________
+//            L3 ELEMENT CONTENT (Spec 3.4)
+// _______________________________________________
+// Used to render element detail views at L3+.
+
+export interface L3ElementContent {
+  header: {
+    type: string;
+    id: string;
+    title: string;
+    subtitle: string | null;
+    status: string;
+    health: HealthStatus | null;
+  };
+  detailSections: L3DetailSection[];
+  relatedItems: L3RelatedItem[];
+  activity: L3ActivityEntry[];
+  actions: L3Action[];
+  chatEnabled: boolean;
+  chatSessionId: string | null;
+}
+
+export interface L3DetailSection {
+  label: string;
+  contentType: 'key_value' | 'text' | 'list' | 'chart' | 'custom';
+  data: Record<string, unknown>;
+}
+
+export interface L3RelatedItem {
+  id: string;
+  type: string;
+  label: string;
+  status: string | null;
+}
+
+export interface L3ActivityEntry {
+  id: string;
+  timestamp: string;
+  type: string;
+  summary: string;
+  actorName: string | null;
+}
+
+export interface L3Action {
+  id: string;
+  label: string;
+  actionType: string;
+  dangerous: boolean;
+  disabled: boolean;
+  disabledReason: string | null;
+}
+
+// _______________________________________________
+//               AGENT TYPES
+// _______________________________________________
+// Agent data structures per MC-RUNTIME-SPEC-v1 section 2.4.
+
+export type AgentTier = 1 | 2 | 3 | 4 | 5;
+
+export type AgentStatus = 'ACTIVE' | 'INACTIVE' | 'SUSPENDED';
+
+export type AutonomyLevel = 'A1' | 'A2' | 'A3';
+
+export interface AgentSummary {
+  id: string;
+  name: string;
+  role: string;
+  tier: AgentTier;
+  status: AgentStatus;
+  departmentId: string | null;
+  lastPulse: string | null; // ISO timestamp
+  health: HealthStatus;
+  activeTasks: number;
+  avatarInitials: string;
+}
+
+export interface AgentDetail extends AgentSummary {
+  mandate: string;
+  autonomyLevel: AutonomyLevel;
+  reportsTo: string | null; // agent ID
+  reportsToName: string | null;
+  inbox: number;
+  performanceSignals: PerformanceSignal[];
+}
+
+export interface PerformanceSignal {
+  label: string;
+  value: string | number;
+  trend: TrendDirection;
+}
+
+// _______________________________________________
+//          DEPARTMENT DETAIL (L3)
+// _______________________________________________
+// Extended department data for L3 detail views.
+
+export interface DepartmentDetail {
+  id: string;
+  name: string;
+  type: DepartmentType;
+  health: HealthStatus;
+  healthDetail: string;
+  chiefId: string | null;
+  chiefName: string | null;
+  headcount: number;
+  activeBlockers: number;
+  openTasks: number;
+  completedTasks: number;
+  recentPulses: PulseSummary[];
+  agents: AgentSummary[];
+  keyMetrics: DepartmentMetric[];
+}
+
+export type DepartmentType =
+  | 'FINANCE'
+  | 'OPERATIONS'
+  | 'PRODUCT'
+  | 'TECHNOLOGY'
+  | 'MARKETING'
+  | 'SALES'
+  | 'LEGAL'
+  | 'EXTERNAL'
+  | 'PEOPLE';
+
+export interface DepartmentMetric {
+  label: string;
+  value: string | number;
+  trend?: TrendDirection;
+}
+
+export interface PulseSummary {
+  id: string;
+  agentId: string;
+  agentName: string;
+  completedAt: string; // ISO timestamp
+  status: 'COMPLETE' | 'FAILED';
+  actionCount: number;
+}
+
+// _______________________________________________
+//          TASK TYPES (from Runtime Spec)
+// _______________________________________________
+
+export type TaskStatus = 'PENDING' | 'IN_PROGRESS' | 'BLOCKED' | 'COMPLETE' | 'CANCELLED';
+
+export type TaskPriority = 'URGENT' | 'HIGH' | 'NORMAL' | 'LOW';
+
+export interface TaskSummary {
+  id: string;
+  title: string;
+  status: TaskStatus;
+  priority: TaskPriority;
+  assigneeId: string;
+  assigneeName: string;
+  createdAt: string;
+  blockedReason: string | null;
+}
