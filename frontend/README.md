@@ -24,7 +24,9 @@ npm run build    # TypeScript check + production build
 
 ## Data Layer
 
-All data flows through a `DataProvider` interface (`src/data/DataProvider.ts`). The current implementation is `MockDataProvider` (hardcoded JSON). To connect to a real API, implement `ApiDataProvider` and swap it in `src/data/DataContext.tsx`.
+All data flows through a `DataProvider` interface (`src/data/DataProvider.ts`). The current implementation is `MockDataProvider`. To connect to a real API, implement `ApiDataProvider` and swap it in `src/data/DataContext.tsx`.
+
+**Mock data** lives in `src/data/mock.json` and is loaded via `src/data/loadMockData.ts`. The loader normalizes raw JSON into TypeScript types defined in `src/data/types.ts`. Types remain the authority; JSON is the data source.
 
 ## Notes
 

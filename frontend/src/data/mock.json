@@ -1,0 +1,383 @@
+{
+  "regionSummaries": [
+    {
+      "sectorType": "COMMAND",
+      "displayLabel": "Command",
+      "health": "green",
+      "attentionCount": 2,
+      "headlineKpi": "3 Active Priorities",
+      "stats": [
+        { "label": "Pending Decisions", "value": 2 },
+        { "label": "Active Overrides", "value": 0 }
+      ],
+      "dataElements": [
+        {
+          "type": "priority_list",
+          "label": "Active Priorities",
+          "items": [
+            { "rank": 1, "text": "Launch v2 platform by Q2" },
+            { "rank": 2, "text": "Close Series A extension" },
+            { "rank": 3, "text": "Hire VP Engineering" }
+          ]
+        },
+        { "type": "count_badge", "label": "Pending Decisions", "count": 2, "severity": "normal" },
+        { "type": "metric", "label": "Board Status", "value": "2 sessions / 1 advisory" },
+        { "type": "count_badge", "label": "Active Overrides", "count": 0, "severity": "normal" }
+      ]
+    },
+    {
+      "sectorType": "ORGANIZATION",
+      "displayLabel": "Organization",
+      "health": "yellow",
+      "attentionCount": 3,
+      "headlineKpi": "24 agents across 5 depts",
+      "stats": [
+        { "label": "Active Blockers", "value": 3 },
+        { "label": "Departments", "value": "5 active / 6 total" }
+      ],
+      "dataElements": [
+        {
+          "type": "avatar_row",
+          "label": "C-Suite",
+          "avatars": [
+            { "id": "cto", "name": "CTO", "status": "active" },
+            { "id": "cfo", "name": "CFO", "status": "active" },
+            { "id": "coo", "name": "COO", "status": "idle" },
+            { "id": "cmo", "name": "CMO", "status": "active" }
+          ]
+        },
+        { "type": "metric", "label": "Total Headcount", "value": 24 },
+        { "type": "count_badge", "label": "Active Blockers", "count": 3, "severity": "warning" },
+        { "type": "chart_mini", "label": "Staffing Trend", "data": [18, 20, 21, 22, 24], "chart_type": "sparkline" },
+        { "type": "metric", "label": "Departments", "value": "5 active / 6 total" }
+      ]
+    },
+    {
+      "sectorType": "OPERATIONS",
+      "displayLabel": "Operations",
+      "health": "green",
+      "attentionCount": 1,
+      "headlineKpi": "2 Open Advisories",
+      "stats": [
+        { "label": "Board Members", "value": 3 },
+        { "label": "Operations Health", "value": "Stable" }
+      ],
+      "dataElements": [
+        {
+          "type": "avatar_row",
+          "label": "Board",
+          "avatars": [
+            { "id": "board-1", "name": "Sarah Chen", "status": "active" },
+            { "id": "board-2", "name": "James Wright", "status": "active" },
+            { "id": "board-3", "name": "Maria Lopez", "status": "idle" }
+          ]
+        },
+        { "type": "metric", "label": "Open Advisories", "value": 2 },
+        {
+          "type": "status_list",
+          "label": "Recent Sessions",
+          "items": [
+            { "text": "Q1 Strategy Review", "status": "completed" },
+            { "text": "Risk Assessment", "status": "in_progress" }
+          ]
+        },
+        { "type": "metric", "label": "Operations Health", "value": "Stable", "trend": "flat" }
+      ]
+    },
+    {
+      "sectorType": "METRICS",
+      "displayLabel": "Metrics & Health",
+      "health": "yellow",
+      "attentionCount": 4,
+      "headlineKpi": "$42K MRR",
+      "stats": [
+        { "label": "North Star", "value": "$42K MRR" },
+        { "label": "Burn Rate", "value": "$85K/mo" },
+        { "label": "Runway", "value": "14 months" }
+      ],
+      "dataElements": [
+        { "type": "metric", "label": "North Star", "value": "$42K MRR", "trend": "up" },
+        { "type": "chart_mini", "label": "Goal Progress", "data": [45, 62, 78, 55, 90], "chart_type": "bar" },
+        { "type": "count_badge", "label": "Attention Items", "count": 4, "severity": "warning" },
+        { "type": "metric", "label": "Health", "value": "Moderate" },
+        {
+          "type": "status_list",
+          "label": "Key Metrics",
+          "items": [
+            { "text": "Revenue Growth +18%", "status": "green" },
+            { "text": "Churn Rate 4.2%", "status": "yellow" },
+            { "text": "NPS Score 62", "status": "green" }
+          ]
+        },
+        { "type": "metric", "label": "Burn Rate", "value": "$85K/mo", "trend": "down" },
+        { "type": "metric", "label": "Runway", "value": "14 months", "trend": "up" },
+        { "type": "chart_mini", "label": "Spend", "data": [72, 78, 85, 82, 88, 85], "chart_type": "line" }
+      ]
+    },
+    {
+      "sectorType": "INTELLIGENCE",
+      "displayLabel": "Intelligence",
+      "health": "green",
+      "attentionCount": 0,
+      "headlineKpi": "47 Decisions Logged",
+      "stats": [
+        { "label": "Knowledge Entries", "value": 128 }
+      ],
+      "dataElements": [
+        { "type": "metric", "label": "Decisions Logged", "value": 47 },
+        { "type": "metric", "label": "Knowledge Entries", "value": 128 },
+        {
+          "type": "status_list",
+          "label": "Recent Activity",
+          "items": [
+            { "text": "Budget reallocation approved", "status": "completed" },
+            { "text": "Hiring freeze memo logged", "status": "completed" },
+            { "text": "Vendor contract review", "status": "in_progress" }
+          ]
+        }
+      ]
+    },
+    {
+      "sectorType": "FINANCE",
+      "displayLabel": "Finance Settings",
+      "health": "green",
+      "attentionCount": 0,
+      "headlineKpi": "Pulse: 15min",
+      "stats": [
+        { "label": "Integrations", "value": "3 active" },
+        { "label": "Budget Utilization", "value": "72%" }
+      ],
+      "dataElements": []
+    }
+  ],
+
+  "departmentTiles": [
+    { "id": "dept-eng", "name": "Engineering", "health": "green", "openItems": 12, "risks": 1, "headcount": 8 },
+    { "id": "dept-mkt", "name": "Marketing", "health": "yellow", "openItems": 7, "risks": 2, "headcount": 4 },
+    { "id": "dept-fin", "name": "Finance", "health": "green", "openItems": 3, "risks": 0, "headcount": 3 },
+    { "id": "dept-ops", "name": "Operations", "health": "green", "openItems": 5, "risks": 0, "headcount": 4 },
+    { "id": "dept-sales", "name": "Sales", "health": "red", "openItems": 9, "risks": 3, "headcount": 5 }
+  ],
+
+  "businessCategoryTiles": [
+    { "label": "Customers", "health": "green", "summaryStat": "NPS 62 | 1,240 active" },
+    { "label": "Growth", "health": "yellow", "summaryStat": "+18% MoM | 3 campaigns" },
+    { "label": "Product & Delivery", "health": "green", "summaryStat": "92% on-track | 2 sprints" },
+    { "label": "People", "health": "green", "summaryStat": "24 agents | 1 open role" }
+  ],
+
+  "financeSettingsBar": {
+    "label": "Finance Settings",
+    "quickStats": "Pulse: 15min | Integrations: 3 active | Budget: 72%"
+  },
+
+  "businessWindowKpis": [
+    { "label": "MRR", "value": "$42K", "trend": "+18%" },
+    { "label": "Headcount", "value": "24", "trend": "+3" },
+    { "label": "Runway", "value": "14mo", "trend": "Stable" },
+    { "label": "NPS", "value": "62", "trend": "+4" }
+  ],
+
+  "orgSectorContent": {
+    "header": {
+      "label": "Organization",
+      "subtitle": "Workforce structure and department health",
+      "health": "yellow",
+      "healthDetail": "3 departments healthy, 1 needs attention, 1 at risk"
+    },
+    "summaryCards": [
+      { "label": "Total Headcount", "value": 24, "detail": "+2 this month" },
+      { "label": "Departments", "value": "5 active", "detail": "1 inactive" },
+      { "label": "Active Blockers", "value": 6, "detail": "Across all departments" },
+      { "label": "Pulse Compliance", "value": "94%", "detail": "Last 24h", "chartData": [88, 92, 95, 91, 94] }
+    ],
+    "subAreas": [
+      { "id": "dept-eng", "type": "department", "label": "Engineering", "health": "green", "summary": "8 agents • 1 blocker • 12 open tasks", "attentionCount": 1 },
+      { "id": "dept-mkt", "type": "department", "label": "Marketing", "health": "yellow", "summary": "4 agents • 2 blockers • 7 open tasks", "attentionCount": 2 },
+      { "id": "dept-fin", "type": "department", "label": "Finance", "health": "green", "summary": "3 agents • 0 blockers • 3 open tasks", "attentionCount": 0 },
+      { "id": "dept-ops", "type": "department", "label": "Operations", "health": "green", "summary": "4 agents • 0 blockers • 5 open tasks", "attentionCount": 0 },
+      { "id": "dept-sales", "type": "department", "label": "Sales", "health": "red", "summary": "5 agents • 3 blockers • 9 open tasks", "attentionCount": 3 }
+    ],
+    "sectorActions": [
+      { "id": "ack-all", "label": "Acknowledge All Alerts", "actionType": "acknowledge", "targetId": null, "requiresConfirmation": false },
+      { "id": "pulse-all", "label": "Trigger Manual Pulse", "actionType": "quick_action", "targetId": null, "requiresConfirmation": true }
+    ]
+  },
+
+  "agents": [
+    { "id": "agent-cto", "name": "Eli Thompson", "role": "CTO", "tier": 2, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:30:00Z", "health": "green", "activeTasks": 3, "avatarInitials": "ET" },
+    { "id": "agent-cfo", "name": "Marty Byrde", "role": "CFO", "tier": 2, "status": "ACTIVE", "departmentId": "dept-fin", "lastPulse": "2026-02-05T14:28:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "MB" },
+    { "id": "agent-coo", "name": "Eddie Horniman", "role": "COO", "tier": 2, "status": "ACTIVE", "departmentId": "dept-ops", "lastPulse": "2026-02-05T14:25:00Z", "health": "green", "activeTasks": 4, "avatarInitials": "EH" },
+    { "id": "agent-cmo", "name": "Emma Rivers", "role": "CMO", "tier": 2, "status": "ACTIVE", "departmentId": "dept-mkt", "lastPulse": "2026-02-05T14:20:00Z", "health": "yellow", "activeTasks": 5, "avatarInitials": "ER" },
+    { "id": "agent-cro", "name": "Jordan Blake", "role": "CRO", "tier": 2, "status": "ACTIVE", "departmentId": "dept-sales", "lastPulse": "2026-02-05T14:15:00Z", "health": "red", "activeTasks": 6, "avatarInitials": "JB" },
+    { "id": "agent-eng-mgr", "name": "Alex Chen", "role": "Engineering Manager", "tier": 3, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:32:00Z", "health": "green", "activeTasks": 4, "avatarInitials": "AC" },
+    { "id": "agent-eng-lead-fe", "name": "Sam Rodriguez", "role": "Frontend Lead", "tier": 4, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:33:00Z", "health": "green", "activeTasks": 3, "avatarInitials": "SR" },
+    { "id": "agent-eng-lead-be", "name": "Taylor Kim", "role": "Backend Lead", "tier": 4, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:31:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "TK" },
+    { "id": "agent-eng-dev-1", "name": "Chris Park", "role": "Senior Developer", "tier": 5, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:29:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "CP" },
+    { "id": "agent-eng-dev-2", "name": "Morgan Lee", "role": "Developer", "tier": 5, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:28:00Z", "health": "green", "activeTasks": 3, "avatarInitials": "ML" },
+    { "id": "agent-eng-dev-3", "name": "Jamie Nguyen", "role": "Developer", "tier": 5, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:27:00Z", "health": "yellow", "activeTasks": 4, "avatarInitials": "JN" },
+    { "id": "agent-eng-qa", "name": "Riley Thompson", "role": "QA Engineer", "tier": 5, "status": "ACTIVE", "departmentId": "dept-eng", "lastPulse": "2026-02-05T14:26:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "RT" },
+    { "id": "agent-mkt-mgr", "name": "Dana Mitchell", "role": "Marketing Manager", "tier": 3, "status": "ACTIVE", "departmentId": "dept-mkt", "lastPulse": "2026-02-05T14:22:00Z", "health": "yellow", "activeTasks": 3, "avatarInitials": "DM" },
+    { "id": "agent-mkt-lead", "name": "Casey Adams", "role": "Content Lead", "tier": 4, "status": "ACTIVE", "departmentId": "dept-mkt", "lastPulse": "2026-02-05T14:21:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "CA" },
+    { "id": "agent-mkt-spc-1", "name": "Avery Collins", "role": "Growth Specialist", "tier": 5, "status": "ACTIVE", "departmentId": "dept-mkt", "lastPulse": "2026-02-05T14:19:00Z", "health": "yellow", "activeTasks": 3, "avatarInitials": "AC" },
+    { "id": "agent-fin-mgr", "name": "Quinn Foster", "role": "Finance Manager", "tier": 3, "status": "ACTIVE", "departmentId": "dept-fin", "lastPulse": "2026-02-05T14:26:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "QF" },
+    { "id": "agent-fin-analyst", "name": "Drew Martinez", "role": "Financial Analyst", "tier": 5, "status": "ACTIVE", "departmentId": "dept-fin", "lastPulse": "2026-02-05T14:24:00Z", "health": "green", "activeTasks": 1, "avatarInitials": "DM" },
+    { "id": "agent-ops-mgr", "name": "Jordan Hayes", "role": "Operations Manager", "tier": 3, "status": "ACTIVE", "departmentId": "dept-ops", "lastPulse": "2026-02-05T14:23:00Z", "health": "green", "activeTasks": 3, "avatarInitials": "JH" },
+    { "id": "agent-ops-lead", "name": "Cameron White", "role": "Process Lead", "tier": 4, "status": "ACTIVE", "departmentId": "dept-ops", "lastPulse": "2026-02-05T14:22:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "CW" },
+    { "id": "agent-ops-coord", "name": "Skyler Brown", "role": "Coordinator", "tier": 5, "status": "ACTIVE", "departmentId": "dept-ops", "lastPulse": "2026-02-05T14:21:00Z", "health": "green", "activeTasks": 2, "avatarInitials": "SB" },
+    { "id": "agent-sales-mgr", "name": "Reese Taylor", "role": "Sales Manager", "tier": 3, "status": "ACTIVE", "departmentId": "dept-sales", "lastPulse": "2026-02-05T14:18:00Z", "health": "red", "activeTasks": 5, "avatarInitials": "RT" },
+    { "id": "agent-sales-lead", "name": "Parker Green", "role": "Account Lead", "tier": 4, "status": "ACTIVE", "departmentId": "dept-sales", "lastPulse": "2026-02-05T14:17:00Z", "health": "yellow", "activeTasks": 4, "avatarInitials": "PG" },
+    { "id": "agent-sales-rep-1", "name": "Finley Scott", "role": "Sales Rep", "tier": 5, "status": "ACTIVE", "departmentId": "dept-sales", "lastPulse": "2026-02-05T14:16:00Z", "health": "green", "activeTasks": 3, "avatarInitials": "FS" },
+    { "id": "agent-sales-rep-2", "name": "Rowan Davis", "role": "Sales Rep", "tier": 5, "status": "ACTIVE", "departmentId": "dept-sales", "lastPulse": "2026-02-05T14:14:00Z", "health": "red", "activeTasks": 4, "avatarInitials": "RD" }
+  ],
+
+  "agentDetails": {
+    "agent-cto": {
+      "mandate": "Own technical strategy, architecture decisions, and engineering team health. Ensure product velocity while maintaining code quality.",
+      "autonomyLevel": "A1",
+      "reportsTo": null,
+      "reportsToName": "CEO",
+      "inbox": 5,
+      "performanceSignals": [
+        { "label": "Sprint Velocity", "value": "+12%", "trend": "up" },
+        { "label": "Code Quality", "value": "A", "trend": "flat" },
+        { "label": "Team Health", "value": "Good", "trend": "up" }
+      ]
+    },
+    "agent-eng-mgr": {
+      "mandate": "Coordinate engineering execution. Manage sprint planning, resource allocation, and team productivity.",
+      "autonomyLevel": "A2",
+      "reportsTo": "agent-cto",
+      "reportsToName": "Eli Thompson (CTO)",
+      "inbox": 8,
+      "performanceSignals": [
+        { "label": "Tasks Completed", "value": 47, "trend": "up" },
+        { "label": "Blockers Resolved", "value": 12, "trend": "flat" },
+        { "label": "On-Time Delivery", "value": "94%", "trend": "up" }
+      ]
+    }
+  },
+
+  "pulses": {
+    "dept-eng": [
+      { "id": "pulse-1", "agentId": "agent-cto", "agentName": "Eli Thompson", "completedAt": "2026-02-05T14:30:00Z", "status": "COMPLETE", "actionCount": 3 },
+      { "id": "pulse-2", "agentId": "agent-eng-mgr", "agentName": "Alex Chen", "completedAt": "2026-02-05T14:32:00Z", "status": "COMPLETE", "actionCount": 5 },
+      { "id": "pulse-3", "agentId": "agent-eng-lead-fe", "agentName": "Sam Rodriguez", "completedAt": "2026-02-05T14:33:00Z", "status": "COMPLETE", "actionCount": 2 },
+      { "id": "pulse-4", "agentId": "agent-eng-dev-3", "agentName": "Jamie Nguyen", "completedAt": "2026-02-05T14:27:00Z", "status": "FAILED", "actionCount": 0 }
+    ],
+    "dept-mkt": [
+      { "id": "pulse-5", "agentId": "agent-cmo", "agentName": "Emma Rivers", "completedAt": "2026-02-05T14:20:00Z", "status": "COMPLETE", "actionCount": 4 },
+      { "id": "pulse-6", "agentId": "agent-mkt-mgr", "agentName": "Dana Mitchell", "completedAt": "2026-02-05T14:22:00Z", "status": "COMPLETE", "actionCount": 2 }
+    ],
+    "dept-fin": [
+      { "id": "pulse-7", "agentId": "agent-cfo", "agentName": "Marty Byrde", "completedAt": "2026-02-05T14:28:00Z", "status": "COMPLETE", "actionCount": 2 },
+      { "id": "pulse-8", "agentId": "agent-fin-mgr", "agentName": "Quinn Foster", "completedAt": "2026-02-05T14:26:00Z", "status": "COMPLETE", "actionCount": 3 }
+    ],
+    "dept-ops": [
+      { "id": "pulse-9", "agentId": "agent-coo", "agentName": "Eddie Horniman", "completedAt": "2026-02-05T14:25:00Z", "status": "COMPLETE", "actionCount": 4 },
+      { "id": "pulse-10", "agentId": "agent-ops-mgr", "agentName": "Jordan Hayes", "completedAt": "2026-02-05T14:23:00Z", "status": "COMPLETE", "actionCount": 2 }
+    ],
+    "dept-sales": [
+      { "id": "pulse-11", "agentId": "agent-cro", "agentName": "Jordan Blake", "completedAt": "2026-02-05T14:15:00Z", "status": "COMPLETE", "actionCount": 5 },
+      { "id": "pulse-12", "agentId": "agent-sales-mgr", "agentName": "Reese Taylor", "completedAt": "2026-02-05T14:18:00Z", "status": "FAILED", "actionCount": 0 }
+    ]
+  },
+
+  "departmentDetails": {
+    "dept-eng": {
+      "id": "dept-eng",
+      "name": "Engineering",
+      "type": "TECHNOLOGY",
+      "health": "green",
+      "healthDetail": "All systems operational. 1 minor blocker in progress.",
+      "chiefId": "agent-cto",
+      "chiefName": "Eli Thompson (CTO)",
+      "headcount": 8,
+      "activeBlockers": 1,
+      "openTasks": 12,
+      "completedTasks": 47,
+      "keyMetrics": [
+        { "label": "Sprint Velocity", "value": "+12%", "trend": "up" },
+        { "label": "Bug Count", "value": 8, "trend": "down" },
+        { "label": "Code Coverage", "value": "87%", "trend": "up" },
+        { "label": "Deploy Frequency", "value": "3/day", "trend": "flat" }
+      ]
+    },
+    "dept-mkt": {
+      "id": "dept-mkt",
+      "name": "Marketing",
+      "type": "MARKETING",
+      "health": "yellow",
+      "healthDetail": "2 campaigns behind schedule. Resource constraint identified.",
+      "chiefId": "agent-cmo",
+      "chiefName": "Emma Rivers (CMO)",
+      "headcount": 4,
+      "activeBlockers": 2,
+      "openTasks": 7,
+      "completedTasks": 23,
+      "keyMetrics": [
+        { "label": "Lead Gen", "value": "+18%", "trend": "up" },
+        { "label": "CAC", "value": "$142", "trend": "down" },
+        { "label": "MQL Rate", "value": "24%", "trend": "flat" },
+        { "label": "Campaign ROI", "value": "3.2x", "trend": "up" }
+      ]
+    },
+    "dept-fin": {
+      "id": "dept-fin",
+      "name": "Finance",
+      "type": "FINANCE",
+      "health": "green",
+      "healthDetail": "All reports on schedule. Runway healthy.",
+      "chiefId": "agent-cfo",
+      "chiefName": "Marty Byrde (CFO)",
+      "headcount": 3,
+      "activeBlockers": 0,
+      "openTasks": 3,
+      "completedTasks": 18,
+      "keyMetrics": [
+        { "label": "Burn Rate", "value": "$85K/mo", "trend": "down" },
+        { "label": "Runway", "value": "14 mo", "trend": "up" },
+        { "label": "AR Days", "value": 28, "trend": "flat" },
+        { "label": "Budget Var", "value": "-3%", "trend": "flat" }
+      ]
+    },
+    "dept-ops": {
+      "id": "dept-ops",
+      "name": "Operations",
+      "type": "OPERATIONS",
+      "health": "green",
+      "healthDetail": "Process efficiency at target. No blockers.",
+      "chiefId": "agent-coo",
+      "chiefName": "Eddie Horniman (COO)",
+      "headcount": 4,
+      "activeBlockers": 0,
+      "openTasks": 5,
+      "completedTasks": 31,
+      "keyMetrics": [
+        { "label": "Process Eff", "value": "94%", "trend": "up" },
+        { "label": "SLA Compliance", "value": "99.2%", "trend": "flat" },
+        { "label": "Ticket Volume", "value": 127, "trend": "down" },
+        { "label": "Avg Resolution", "value": "4.2h", "trend": "down" }
+      ]
+    },
+    "dept-sales": {
+      "id": "dept-sales",
+      "name": "Sales",
+      "type": "SALES",
+      "health": "red",
+      "healthDetail": "Pipeline at risk. 3 deals stalled. Q1 target may miss.",
+      "chiefId": "agent-cro",
+      "chiefName": "Jordan Blake (CRO)",
+      "headcount": 5,
+      "activeBlockers": 3,
+      "openTasks": 9,
+      "completedTasks": 14,
+      "keyMetrics": [
+        { "label": "Pipeline", "value": "$380K", "trend": "down" },
+        { "label": "Win Rate", "value": "22%", "trend": "down" },
+        { "label": "Avg Deal Size", "value": "$12K", "trend": "flat" },
+        { "label": "Quota Attain", "value": "68%", "trend": "down" }
+      ]
+    }
+  }
+}
