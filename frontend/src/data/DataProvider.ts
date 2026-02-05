@@ -11,9 +11,15 @@ import type {
   BusinessCategoryTile,
   FinanceSettingsBarData,
   SectorType,
+  L2SectorContent,
+  DepartmentDetail,
+  AgentSummary,
+  AgentDetail,
 } from './types';
 
 export interface DataProvider {
+  // ─── L1 (Global View) Queries ───
+
   /** Returns L1 summary data for all 6 regions. */
   getAllRegionSummaries(): RegionSummary[];
 
@@ -28,4 +34,23 @@ export interface DataProvider {
 
   /** Returns collapsed Finance settings bar data. */
   getFinanceSettingsBar(): FinanceSettingsBarData;
+
+  // ─── L2 (Sector View) Queries ───
+
+  /** Returns L2 content for the Organization sector (departments as sub-areas). */
+  getOrganizationSectorContent(): L2SectorContent;
+
+  // ─── L3 (Detail View) Queries ───
+
+  /** Returns full detail for a specific department. */
+  getDepartmentDetail(departmentId: string): DepartmentDetail | undefined;
+
+  /** Returns agent roster for a department, optionally filtered by tier. */
+  getAgentsByDepartment(departmentId: string, tierFilter?: number): AgentSummary[];
+
+  /** Returns full detail for a specific agent. */
+  getAgentDetail(agentId: string): AgentDetail | undefined;
+
+  /** Returns all agents across the organization. */
+  getAllAgents(): AgentSummary[];
 }

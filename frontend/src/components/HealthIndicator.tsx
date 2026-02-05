@@ -22,11 +22,17 @@ const HEALTH_LABELS: Record<HealthStatus, string> = {
 interface Props {
   status: HealthStatus;
   showLabel?: boolean;
-  size?: 'sm' | 'md';
+  size?: 'sm' | 'md' | 'large';
 }
 
+const DOT_SIZES: Record<'sm' | 'md' | 'large', number> = {
+  sm: 8,
+  md: 10,
+  large: 14,
+};
+
 export function HealthIndicator({ status, showLabel = false, size = 'sm' }: Props) {
-  const dotSize = size === 'sm' ? 8 : 10;
+  const dotSize = DOT_SIZES[size];
 
   return (
     <span
